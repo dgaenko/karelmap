@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Карта региональных инфраструктурных проектов</title>
+    <link rel="icon" href="media/project_map_media/2021/3/3/favicon.ico" type="image/x-icon">
+    <link type="text/css" href="static/css/bootstrap.css" rel="stylesheet">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=a2718abd-328d-4bd5-a0e1-f246345a30d4&lang=ru_RU"
+            type="text/javascript"></script>
+    <!--    Скрипты карты-->
+    <script>window.jQuery || document.write('<script src="static/js/jquery-3.4.1.min.js"><\/script>')</script>
+    <script src="static/js/map.js"></script>
+    <link type="text/css" href="static/js/uikit-3.3.3/css/uikit.css" rel="stylesheet">
+
+</head>
+<body style="min-height: 100vh;">
+<div class="header container-fluid">
+    <div class="row h-100">
+        <div class="col-auto col-lg-3">
+            <a href="index.html" class="text-decoration-none header__logo-link">
+                <picture>
+                    <source srcset="static/img/logo.svg" media="(max-width: 1023px)">
+                    <img class="header__logo"
+                         src="static/img/logo.svg">
+                </picture>
+            </a>
+        </div>
+
+
+        <div class="col-9 col-lg-9 ml-auto">
+            <div class="ml-auto header__info">
+                <div class="row">
+                    <div class="header-slider uk-position-relative uk-visible-toggle" tabindex="-1"
+                         uk-slider="clsActivated: uk-transition-active">
+                        <ul class="uk-slider-items uk-grid">
+                            <li class="uk-width">
+                                <div class="uk-panel header__info-item">
+                                    <div class="header__info-item-wrapper">
+                                        <p class="header__first-title">83</p>
+                                        <p class="header__first-description">образовательных учреждений создано и
+                                            обновлено</p>
+                                    </div>
+                                    <div class="header__info-item-wrapper">
+                                        <p class="header__first-title">1251 км</p>
+                                        <p class="header__first-description">дорог отремонтировано и построено</p>
+                                    </div>
+                                    <div class="header__info-item-wrapper">
+                                        <p class="header__first-title">83</p>
+                                        <p class="header__first-description">образовательных учреждений создано и
+                                            обновлено</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="uk-width">
+                                <div class="uk-panel header__info-item">
+                                    <div class="header__info-item-wrapper">
+                                        <p class="header__first-title">590 км</p>
+                                        <p class="header__first-description">дорог отремонтировано и построено</p>
+                                    </div>
+                                    <div class="header__info-item-wrapper">
+                                        <p class="header__first-title">83</p>
+                                        <p class="header__first-description">образовательных учреждений создано и
+                                            обновлено</p>
+                                    </div>
+                                    <div class="header__info-item-wrapper">
+                                        <p class="header__first-title">83</p>
+                                        <p class="header__first-description">образовательных учреждений создано и
+                                            обновлено</p>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                        <a class="uk-position-center-left uk-position-small d-none d-md-inline-block" href="#"
+                           uk-slidenav-previous uk-slider-item="previous"></a>
+                        <a class="uk-position-center-right uk-position-small d-none d-md-inline-block" href="#"
+                           uk-slidenav-next
+                           uk-slider-item="next"></a>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+<div class="" style="min-height: 100%;">
+    <div class="main-content">
+        <div class="sidebar">
+            <div class="projects_list">
+                <div class="to-back-wrap"></div>
+                <div class="mt-1 mb-2"><a class="get-regions" style="background-color: #F2F2F2; color: #4F4F4F;"><img
+                        src="static/img/gerb.png" alt="">Выбрать муниципальное образование</a></div>
+                <div class="mb-3 btn-complete-project"><a href="#" class="expertise__btn"
+                                                          style="background-color: #F2F2F2; color: #4F4F4F;"
+                                                          onclick="getCompletedFunction()">Реализованные объекты</a>
+                </div>
+
+                <div id="categories" class="position-relative">
+                    <p class="categories__list-title">Список всех объектов</p>
+                    <div class="my-1">
+                        <a class="category_btn" onclick="getCategory(this)" data-id="1" data-rayon-id="0"
+                           style="background-color: #FFAC59;">
+                            <img src="media/project_map_media/2021/3/4/obrazovanie-2.svg" alt="">
+                            <div>Образование <span class="font-weight-normal">(206)</span></div>
+                        </a>
+                    </div>
+
+                    <div class="my-1"><a class="category_btn" onclick="getCategory(this)" data-id="2" data-rayon-id="0"
+                                         style="background-color: #77D998;">
+                        <img src="media/project_map_media/2021/3/4/zdravoohranenie-2.svg" alt="">
+                        <div>Здравоохранение <span class="font-weight-normal">(65)</span></div>
+                    </a></div>
+
+                    <div class="my-1"><a class="category_btn" onclick="getCategory(this)" data-id="3" data-rayon-id="0"
+                                         style="background-color: #BF8760;">
+                        <img src="media/project_map_media/2021/3/4/kultura-2.svg" alt="">
+                        <div>Культура <span class="font-weight-normal">(86)</span></div>
+                    </a></div>
+
+                    <div class="my-1"><a class="category_btn" onclick="getCategory(this)" data-id="4" data-rayon-id="0"
+                                         style="background-color: #F26549;">
+                        <img src="media/project_map_media/2021/3/4/fizkultura-2_b2qmCDI.svg" alt="">
+                        <div>Физкультура и спорт <span class="font-weight-normal">(49)</span></div>
+                    </a></div>
+
+                    <div class="my-1"><a class="category_btn" onclick="getCategory(this)" data-id="5" data-rayon-id="0"
+                                         style="background-color: #B5D96C;">
+                        <img src="media/project_map_media/2021/3/4/sotspolitika-2_tY6mIS5.svg" alt="">
+                        <div>Социальная политика <span class="font-weight-normal">(15)</span></div>
+                    </a></div>
+
+                    <div class="my-1"><a class="category_btn" onclick="getCategory(this)" data-id="6" data-rayon-id="0"
+                                         style="background-color: #D99A41;">
+                        <img src="media/project_map_media/2021/3/4/zhilischnoe-stroitelstvo-2_BYpU74f.svg" alt="">
+                        <div>Жилищное строительство <span class="font-weight-normal">(69)</span></div>
+                    </a></div>
+
+                    <div class="my-1"><a class="category_btn" onclick="getCategory(this)" data-id="7" data-rayon-id="0"
+                                         style="background-color: #99918A;">
+                        <img src="media/project_map_media/2021/3/4/dorozhnoe-stroitelstvo-2.svg" alt="">
+                        <div>Дорожное строительство <span class="font-weight-normal">(500)</span></div>
+                    </a></div>
+
+                    <div class="my-1"><a class="category_btn" onclick="getCategory(this)" data-id="8" data-rayon-id="0"
+                                         style="background-color: #D9D941;">
+                        <img src="media/project_map_media/2021/3/4/kommunalnoe-stroitelstvo-2_ythokpF.svg" alt="">
+                        <div>Коммунальное строительство <span class="font-weight-normal">(792)</span></div>
+                    </a></div>
+
+                    <div class="my-1"><a class="category_btn" onclick="getCategory(this)" data-id="9" data-rayon-id="0"
+                                         style="background-color: #B8A3CC;">
+                        <img src="media/project_map_media/2021/3/4/kap-remont-2.svg" alt="">
+                        <div>Программа капитального ремонта <span class="font-weight-normal">(259)</span></div>
+                    </a></div>
+
+                    <div class="my-1"><a class="category_btn" onclick="getCategory(this)" data-id="12" data-rayon-id="0"
+                                         style="background-color: #FFCC99;">
+                        <img src="media/project_map_media/2021/3/15/trees.svg" alt="">
+                        <div>Благоустройство территорий <span class="font-weight-normal">(216)</span></div>
+                    </a></div>
+
+                    <div class="my-1"><a class="category_btn" onclick="getCategory(this)" data-id="10" data-rayon-id="0"
+                                         style="background-color: #BFBFBF;">
+                        <img src="media/project_map_media/2021/3/4/prochee-2.svg" alt="">
+                        <div>Прочее <span class="font-weight-normal">(65)</span></div>
+                    </a></div>
+
+                </div>
+
+                <div class="mt-2 mb-3 expertise">
+                    <p class="expertise__title">Не нашли объект? Есть идея? Отправьте ее в «Народную экспертизу».</p>
+                    <a href="https://narod-expert.ru/vse-idei/?utm=123456" class="expertise__btn"
+                       style="background-color: #F2F2F2; color: #4F4F4F;"><img src="static/img/expertise.png" alt="">Народная
+                        экспертиза</a>
+                </div>
+            </div>
+
+            <footer>
+                <div class="footer-wrap">
+                    <p class="footer_text">Все материалы сайта доступны по лицензии <a
+                            href="https://creativecommons.org/licenses/by/3.0/deed.ru" class="footer__attribution"
+                            target="_blank">Creative Commons Attribution 3.0</a> при условии ссылки на первоисточник (в
+                        случае использования материалов сайта в сети Интернет — интерактивная ссылка).</p>
+                </div>
+            </footer>
+        </div>
+        <div class="map-wrap position-relative">
+            <div id="map" style="width: 100%; height: 100%; min-height: calc(100vh - 112px);"></div>
+        </div>
+    </div>
+</div>
+<!-- Modals -->
+<div class="main-modal regions-modal">
+    <div class="main-modal__content">
+        <a href="#" class="close-regions back-btn">Назад</a>
+
+        <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="1">
+            <img src="media/gerb-01.png" alt="">
+            Алексеевский городской округ
+        </a>
+
+        <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="23">
+            <img src="media/gerb-02.png" alt="">
+            Белгород
+        </a>
+
+        <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="2">
+            <img src="media/gerb-03.png" alt="">
+            Белгородский район
+        </a>
+
+        <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="1">
+            <img src="media/gerb-01.png" alt="">
+            Алексеевский городской округ
+        </a>
+
+        <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="23">
+            <img src="media/gerb-02.png" alt="">
+            Белгород
+        </a>
+
+        <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="2">
+            <img src="media/gerb-03.png" alt="">
+            Белгородский район
+        </a>
+
+        <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="1">
+            <img src="media/gerb-01.png" alt="">
+            Алексеевский городской округ
+        </a>
+
+        <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="23">
+            <img src="media/gerb-02.png" alt="">
+            Белгород
+        </a>
+
+        <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="2">
+            <img src="media/gerb-03.png" alt="">
+            Белгородский район
+        </a>
+
+        <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="1">
+            <img src="media/gerb-01.png" alt="">
+            Алексеевский городской округ
+        </a>
+
+        <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="23">
+            <img src="media/gerb-02.png" alt="">
+            Белгород
+        </a>
+
+        <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="2">
+            <img src="media/gerb-03.png" alt="">
+            Белгородский район
+        </a>
+
+        <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="1">
+            <img src="media/gerb-01.png" alt="">
+            Алексеевский городской округ
+        </a>
+
+        <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="23">
+            <img src="media/gerb-02.png" alt="">
+            Белгород
+        </a>
+
+        <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="2">
+            <img src="media/gerb-03.png" alt="">
+            Белгородский район
+        </a>
+
+        <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="1">
+            <img src="media/gerb-01.png" alt="">
+            Алексеевский городской округ
+        </a>
+
+        <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="23">
+            <img src="media/gerb-02.png" alt="">
+            Белгород
+        </a>
+
+        <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="2">
+            <img src="media/gerb-03.png" alt="">
+            Белгородский район
+        </a>
+
+        <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="1">
+            <img src="media/gerb-01.png" alt="">
+            Алексеевский городской округ
+        </a>
+
+        <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="23">
+            <img src="media/gerb-02.png" alt="">
+            Белгород
+        </a>
+
+        <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="2">
+            <img src="media/gerb-03.png" alt="">
+            Белгородский район
+        </a>
+
+        <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="1">
+            <img src="media/gerb-01.png" alt="">
+            Алексеевский городской округ
+        </a>
+
+    </div>
+</div>
+
+<div class="main-modal category-modal">
+    <div class="main-modal__content">
+        <a href="#" class="close-category-modal back-btn">Назад</a>
+        <div class="category-modal__content"></div>
+    </div>
+</div>
+
+<div class="main-modal righter modal-shadow completed-modal active">
+    <div class="main-modal__content">
+        <a href="#" class="close-completed-modal back-btn">
+            <span></span>
+            <span></span>
+        </a>
+        <div class="completed-modal__content position-relative">
+            <div class="border-bottom mb-2"><p class="complete__title">Реализовано объектов:</p>
+                <p class="complete__num">365</p></div>
+            <div class="border-bottom pb-2"><p class="complete__title">Последние реализованные объекты:</p></div>
+            <a href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="0" data-rayon-id="0"
+               data-p-id="28"><p class="main-modal__title">Создание скейт-парка по ул. Трудовая в п.Красная Яруга
+                Краснояружского района Белгородской области</p>
+                <p class="main-modal__subtitle">Трудовая улица посёлок городского типа Красная Яруга, Белгородская
+                    область</p></a><a href="#" class="main-modal__regions__header" onclick="getProgect(this)"
+                                      data-id="0" data-rayon-id="0" data-p-id="87"><p class="main-modal__title">
+            Автодорога ул.Героев с.Графовка</p>
+            <p class="main-modal__subtitle">Шебекинский район с.Графовка</p></a><a href="#"
+                                                                                   class="main-modal__regions__header"
+                                                                                   onclick="getProgect(this)"
+                                                                                   data-id="0" data-rayon-id="0"
+                                                                                   data-p-id="89"><p
+                class="main-modal__title">Благоустройство парковой зоны в с. Иловка Алексеевского городского округа</p>
+            <p class="main-modal__subtitle">Белгородская область, Алексеевский р-он</p></a><a href="#"
+                                                                                              class="main-modal__regions__header"
+                                                                                              onclick="getProgect(this)"
+                                                                                              data-id="0"
+                                                                                              data-rayon-id="0"
+                                                                                              data-p-id="93"><p
+                class="main-modal__title">Автодорога ул. Харьковская с.Новая Таволжанка</p>
+            <p class="main-modal__subtitle">Шебекинский район с.Новая Таволжанка ул. Харьковская</p></a><a href="#"
+                                                                                                           class="main-modal__regions__header"
+                                                                                                           onclick="getProgect(this)"
+                                                                                                           data-id="0"
+                                                                                                           data-rayon-id="0"
+                                                                                                           data-p-id="148">
+            <p class="main-modal__title">ОГАПОУ "Корочанский сельскохозяйственный техникум"</p>
+            <p class="main-modal__subtitle">Белгородская обл., г.Короча,ул.Интернациональная,д.62</p></a><a href="#"
+                                                                                                            class="main-modal__regions__header"
+                                                                                                            onclick="getProgect(this)"
+                                                                                                            data-id="0"
+                                                                                                            data-rayon-id="0"
+                                                                                                            data-p-id="150">
+            <p class="main-modal__title">Капитальный ремонт братской могилы с. Шляхово Корочанского района</p>
+            <p class="main-modal__subtitle">Белгородская обл., Корочанский муниципальный район, Сельское поселение
+                Шляховское, Шляхово с, Им Орехова ул</p></a><a href="#" class="main-modal__regions__header"
+                                                               onclick="getProgect(this)" data-id="0" data-rayon-id="0"
+                                                               data-p-id="164"><p class="main-modal__title">Капитальный
+            ремонт и ремонт автодорог общего пользования местного значения в с. Большая Халань ул. Базарная - ул.
+            Новоселовка (с ремонтом а/б покрытия моста на ул. Прилепы)</p>
+            <p class="main-modal__subtitle">Белгородская область, Корочанский р-он, с.Большая Халань</p></a><a href="#"
+                                                                                                               class="main-modal__regions__header"
+                                                                                                               onclick="getProgect(this)"
+                                                                                                               data-id="0"
+                                                                                                               data-rayon-id="0"
+                                                                                                               data-p-id="168">
+            <p class="main-modal__title">Капитальный ремонт и ремонт автодорог общего пользования местного значения</p>
+            <p class="main-modal__subtitle">Белгородская область, Корочанский р-он, с. Мелихово ул. Центральная</p>
+        </a><a href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="0" data-rayon-id="0"
+               data-p-id="172"><p class="main-modal__title">Капитальный ремонт и ремонт автодорог общего пользования
+            местного значения</p>
+            <p class="main-modal__subtitle">Белгородская область, Корочанский р-он, с. Прудки ул. Лесная</p></a><a
+                href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="0" data-rayon-id="0"
+                data-p-id="183"><p class="main-modal__title">Обустройство зоны отдыха "Пляж Бехтеевка" Корочанского
+            района</p>
+            <p class="main-modal__subtitle">село Бехтеевка Корочанский район, Белгородская область</p></a><a href="#"
+                                                                                                             class="main-modal__regions__header"
+                                                                                                             onclick="getProgect(this)"
+                                                                                                             data-id="0"
+                                                                                                             data-rayon-id="0"
+                                                                                                             data-p-id="225">
+            <p class="main-modal__title">МБДОУ "Центр развития ребенка - детский сад "Сказка" Борисовского района</p>
+            <p class="main-modal__subtitle">Белгородская область, Борисовский район, п. Борисовка, ул. Борисовская, д.
+                9</p></a><a href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="0"
+                            data-rayon-id="0" data-p-id="231"><p class="main-modal__title">Капитальный ремонт МБДОУ
+            «Крюковский детский сад», с. Крюково</p>
+            <p class="main-modal__subtitle">Белгородская область, Борисовский район, село Крюково, улица Горянка, 10
+                А</p></a><a href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="0"
+                            data-rayon-id="0" data-p-id="240"><p class="main-modal__title">Установка детской площадки с.
+            Теплое и с. Новоалександровка</p>
+            <p class="main-modal__subtitle">Белгородская область, Борисовский район, село Теплое и Новоалександровка</p>
+        </a><a href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="0" data-rayon-id="0"
+               data-p-id="289"><p class="main-modal__title">Капитальный ремонт ГБСУСОССНЗ "Прохоровский дом-интернат для
+            престарелых и инвалидов" имени Почетного гражданина Белгородской области М.А. Деркач", п. Прохоровка</p>
+            <p class="main-modal__subtitle">Белгородская обл, Прохоровский муниципальный район, Городское поселение
+                поселок Прохоровка, Прохоровка пгт, ул. Парковая, 48</p></a><a href="#"
+                                                                               class="main-modal__regions__header"
+                                                                               onclick="getProgect(this)" data-id="0"
+                                                                               data-rayon-id="0" data-p-id="343"><p
+                class="main-modal__title">Благоустройство зоны отдыха в с.Репенка Красногвардейского района</p>
+            <p class="main-modal__subtitle">село Репенка Красногвардейский район, Белгородская область</p></a><a
+                href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="0" data-rayon-id="0"
+                data-p-id="408"><p class="main-modal__title">Строительство ОГАПОУ "Ракитянский агротехнологический
+            техникум" в п. Ракитное Ракитянского района Белгородской области</p>
+            <p class="main-modal__subtitle">Белгородская область, Ракитянский район, п.Ракитное, ул.Коммунаров, д.11</p>
+        </a><a href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="0" data-rayon-id="0"
+               data-p-id="432"><p class="main-modal__title">Ремонт Родинского ДК</p>
+            <p class="main-modal__subtitle">Белгородская обл., Ровеньский р-н,&nbsp;п.&nbsp;Ровеньки, ул. Московская,
+                29</p></a><a href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="0"
+                             data-rayon-id="0" data-p-id="531"><p class="main-modal__title">Создание и обустройство зоны
+            отдыха родовых поместий х. Ольхов</p>
+            <p class="main-modal__subtitle">хутор Ольхов Волоконовский район, Белгородская область</p></a><a href="#"
+                                                                                                             class="main-modal__regions__header"
+                                                                                                             onclick="getProgect(this)"
+                                                                                                             data-id="0"
+                                                                                                             data-rayon-id="0"
+                                                                                                             data-p-id="606">
+            <p class="main-modal__title">Обустройство детской площадки в с. Колосково Валуйского городского округа</p>
+            <p class="main-modal__subtitle">село Колосково Валуйский городской округ, Белгородская область</p></a><a
+                href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="0" data-rayon-id="0"
+                data-p-id="636"><p class="main-modal__title">Ремонт улично-дорожной сети района ул. Кооперативная</p>
+            <p class="main-modal__subtitle">Новый Оскол</p></a><a href="#" class="main-modal__regions__header"
+                                                                  onclick="getProgect(this)" data-id="0"
+                                                                  data-rayon-id="0" data-p-id="641"><p
+                class="main-modal__title">Устройство многофункциональной тропы здоровья и спортивной площадки на
+            территории парка в с. Великомихайловка Новооскольского городского округа</p>
+            <p class="main-modal__subtitle">Белгородская область, Новооскольский район, с.Великомихайловка</p></a><a
+                href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="0" data-rayon-id="0"
+                data-p-id="642"><p class="main-modal__title">Капитальный ремонт дворовой территории по пер.
+            Кооперативный д.4-6-8-10-12-14-16-18-24 (завершение работ)</p>
+            <p class="main-modal__subtitle">Новый Оскол</p></a><a href="#" class="main-modal__regions__header"
+                                                                  onclick="getProgect(this)" data-id="0"
+                                                                  data-rayon-id="0" data-p-id="708"><p
+                class="main-modal__title">Обустройство зоны отдыха у пруда в селе Николаевка</p>
+            <p class="main-modal__subtitle">село Николаевка Вейделевский район, Белгородская область</p></a><a href="#"
+                                                                                                               class="main-modal__regions__header"
+                                                                                                               onclick="getProgect(this)"
+                                                                                                               data-id="0"
+                                                                                                               data-rayon-id="0"
+                                                                                                               data-p-id="739">
+            <p class="main-modal__title">Строительство корпуса на две групповые ячейки детского сада МБОУ "Сафоновская
+                ООШ" Ивнянского района Белгородской области</p>
+            <p class="main-modal__subtitle">Ивнянский район</p></a><a href="#" class="main-modal__regions__header"
+                                                                      onclick="getProgect(this)" data-id="0"
+                                                                      data-rayon-id="0" data-p-id="759"><p
+                class="main-modal__title">Капитальный ремонт здания сельского клуба с. Замостье Грайворонского
+            городского округа</p>
+            <p class="main-modal__subtitle">с. Замостье, ул. Добросельская улица, д.21</p></a><a href="#"
+                                                                                                 class="main-modal__regions__header"
+                                                                                                 onclick="getProgect(this)"
+                                                                                                 data-id="0"
+                                                                                                 data-rayon-id="0"
+                                                                                                 data-p-id="788"><p
+                class="main-modal__title">Обустройство спортивной площадки с.Дорогощь Грайворонского городского
+            округа</p>
+            <p class="main-modal__subtitle">село Дорогощь Грайворонский городской округ, Белгородская область</p></a><a
+                href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="0" data-rayon-id="0"
+                data-p-id="966"><p class="main-modal__title">Ремонт автодороги по ул. Победы с. Ближняя Игуменка</p>
+            <p class="main-modal__subtitle">Белгородский район, ул. Победы, с. Ближняя Игуменка</p></a><a href="#"
+                                                                                                          class="main-modal__regions__header"
+                                                                                                          onclick="getProgect(this)"
+                                                                                                          data-id="0"
+                                                                                                          data-rayon-id="0"
+                                                                                                          data-p-id="994">
+            <p class="main-modal__title">Капитальный ремонт МБУ ДО ДШИ № 1</p>
+            <p class="main-modal__subtitle">Первомайская улица, 2А</p></a><a href="#"
+                                                                             class="main-modal__regions__header"
+                                                                             onclick="getProgect(this)" data-id="0"
+                                                                             data-rayon-id="0" data-p-id="1014"><p
+                class="main-modal__title">Капитальный ремонт учебного корпуса № 1 "Белгородский педагогический
+            колледж"</p>
+            <p class="main-modal__subtitle">г. Белгород, ул. Будённого, 1</p></a><a href="#"
+                                                                                    class="main-modal__regions__header"
+                                                                                    onclick="getProgect(this)"
+                                                                                    data-id="0" data-rayon-id="0"
+                                                                                    data-p-id="1034"><p
+                class="main-modal__title">Капитальный ремонт ГБУК "Белгородский государственный художественный музей",
+            г. Белгород (вентиляция, кондиционирование)</p>
+            <p class="main-modal__subtitle">г. Белгород, ул. Победы, 77</p></a><a href="#"
+                                                                                  class="main-modal__regions__header"
+                                                                                  onclick="getProgect(this)" data-id="0"
+                                                                                  data-rayon-id="0" data-p-id="1038"><p
+                class="main-modal__title">Капитальный ремонт здания управления государственной охраны объектов
+            культурного наследия Белгородской области</p>
+            <p class="main-modal__subtitle">г. Белгород, ул. Князя Трубецкого, 32</p></a><a href="#"
+                                                                                            class="main-modal__regions__header"
+                                                                                            onclick="getProgect(this)"
+                                                                                            data-id="0"
+                                                                                            data-rayon-id="0"
+                                                                                            data-p-id="1461"><p
+                class="main-modal__title">Капитальный ремонт cооружения "Памятник погибшим односельчанам в годы ВОВ"</p>
+            <p class="main-modal__subtitle">Белгородская область, Красненский район, с. Готовье</p></a><a href="#"
+                                                                                                          class="main-modal__regions__header"
+                                                                                                          onclick="getProgect(this)"
+                                                                                                          data-id="0"
+                                                                                                          data-rayon-id="0"
+                                                                                                          data-p-id="1520">
+            <p class="main-modal__title">Благоустройство территории Свято-Троицкого парка с. Большетроицкое Шебекинского
+                городского округа</p>
+            <p class="main-modal__subtitle">село Большетроицкое Шебекинский городской округ, Белгородская область</p>
+        </a><a href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="0" data-rayon-id="0"
+               data-p-id="1560"><p class="main-modal__title">Ремонт автодороги Боровки-Скрынников
+            (Беломестное-Боровки-Скрынников, 2020 г. - км 6+580-км)</p>
+            <p class="main-modal__subtitle">Новооскольский городской округ, Боровки-Скрынников, км 10+780- км 15+030</p>
+        </a><a href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="0" data-rayon-id="0"
+               data-p-id="1592"><p class="main-modal__title">Обустройство тротуара в г. Новый Оскол по ул. Тургенева
+            (709 м)</p>
+            <p class="main-modal__subtitle">г. Новый Оскол, ул. Тургенева</p></a><a href="#"
+                                                                                    class="main-modal__regions__header"
+                                                                                    onclick="getProgect(this)"
+                                                                                    data-id="0" data-rayon-id="0"
+                                                                                    data-p-id="1701"><p
+                class="main-modal__title">Капитальный ремонт МБУ ДО "Детская музыкальная школа № 1"</p>
+            <p class="main-modal__subtitle">309180, Белгородская обл, Городской округ Губкинский, Губкин г,
+                Комсомольская ул, дом 35</p></a><a href="#" class="main-modal__regions__header"
+                                                   onclick="getProgect(this)" data-id="0" data-rayon-id="0"
+                                                   data-p-id="1718"><p class="main-modal__title">Строительство автодорог
+            в МКР Троицкий</p>
+            <p class="main-modal__subtitle">мкр. Троицкий, Губкинский городской округ</p></a><a href="#"
+                                                                                                class="main-modal__regions__header"
+                                                                                                onclick="getProgect(this)"
+                                                                                                data-id="0"
+                                                                                                data-rayon-id="0"
+                                                                                                data-p-id="1724"><p
+                class="main-modal__title">Строительство подъезда от автомобильной дороги Короча-Губкин-Горшечное к
+            микрорайону Журавлики, г. Губкин</p>
+            <p class="main-modal__subtitle">Губкинский городской округ, г. Губкин</p></a><a href="#"
+                                                                                            class="main-modal__regions__header"
+                                                                                            onclick="getProgect(this)"
+                                                                                            data-id="0"
+                                                                                            data-rayon-id="0"
+                                                                                            data-p-id="1727"><p
+                class="main-modal__title">Ремонт автодороги по ул. 2я Академическая</p>
+            <p class="main-modal__subtitle">ул. 2-я Академическая, г.Губкин, Белгородская область</p></a><a href="#"
+                                                                                                            class="main-modal__regions__header"
+                                                                                                            onclick="getProgect(this)"
+                                                                                                            data-id="0"
+                                                                                                            data-rayon-id="0"
+                                                                                                            data-p-id="1734">
+            <p class="main-modal__title">Ремонт автодороги по ул. Железнодорожная</p>
+            <p class="main-modal__subtitle">ул. Железнодорожная, г. Губкин, Белгородская область</p></a><a href="#"
+                                                                                                           class="main-modal__regions__header"
+                                                                                                           onclick="getProgect(this)"
+                                                                                                           data-id="0"
+                                                                                                           data-rayon-id="0"
+                                                                                                           data-p-id="1741">
+            <p class="main-modal__title">Благоустройство территории спортивно-игровой зоны в с. Заломное Губкинского
+                городского округа</p>
+            <p class="main-modal__subtitle">село Заломное Губкинский городской округ, Белгородская область</p></a><a
+                href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="0" data-rayon-id="0"
+                data-p-id="1752"><p class="main-modal__title">Установка освещения ул. Рождественская мкр-на Юбилейный г.
+            Губкин</p>
+            <p class="main-modal__subtitle">г. Губкин, ул. Рождественская мкр-на Юбилейный</p></a><a href="#"
+                                                                                                     class="main-modal__regions__header"
+                                                                                                     onclick="getProgect(this)"
+                                                                                                     data-id="0"
+                                                                                                     data-rayon-id="0"
+                                                                                                     data-p-id="1966"><p
+                class="main-modal__title">Приобретение нежилого здания (помещений) для размещения учреждений социальной
+            сферы в х. Тополи Грайворонского городского округа</p>
+            <p class="main-modal__subtitle">309385, Белгородская обл, Городской округ Грайворонский, Доброивановка с,
+                Колхозная ул, дом 10А</p></a><a href="#" class="main-modal__regions__header" onclick="getProgect(this)"
+                                                data-id="0" data-rayon-id="0" data-p-id="1992"><p
+                class="main-modal__title">Дворовая территория г. Новый Оскол, ул. Красноармейская, д. 7</p>
+            <p class="main-modal__subtitle">г. Новый Оскол, ул. Красноармейская, д. 7</p></a><a href="#"
+                                                                                                class="main-modal__regions__header"
+                                                                                                onclick="getProgect(this)"
+                                                                                                data-id="0"
+                                                                                                data-rayon-id="0"
+                                                                                                data-p-id="1995"><p
+                class="main-modal__title">Дворовая территория г. Новый Оскол, пер. Кооперативный, д. 34 – 36</p>
+            <p class="main-modal__subtitle">г. Новый Оскол, пер. Кооперативный, д. 34 – 36</p></a><a href="#"
+                                                                                                     class="main-modal__regions__header"
+                                                                                                     onclick="getProgect(this)"
+                                                                                                     data-id="0"
+                                                                                                     data-rayon-id="0"
+                                                                                                     data-p-id="2000"><p
+                class="main-modal__title">Место отдыха "Уголок"</p>
+            <p class="main-modal__subtitle">г. Новый Оскол, набережная</p></a><a href="#"
+                                                                                 class="main-modal__regions__header"
+                                                                                 onclick="getProgect(this)" data-id="0"
+                                                                                 data-rayon-id="0" data-p-id="2002"><p
+                class="main-modal__title">Благоустройство зоны фонтана и концертной площадки в парке Горького
+            п.Чернянка</p>
+            <p class="main-modal__subtitle">п. Чернянка, ул. Садовая</p></a><a href="#"
+                                                                               class="main-modal__regions__header"
+                                                                               onclick="getProgect(this)" data-id="0"
+                                                                               data-rayon-id="0" data-p-id="2041"><p
+                class="main-modal__title">Установка освещения по ул. Меловая в с. Теплый Колодезь (Теплоколодезянская
+            СТА) Губкинский район</p>
+            <p class="main-modal__subtitle">Губкинский район, с. Теплый Колодезь, ул. Меловая</p></a><a href="#"
+                                                                                                        class="main-modal__regions__header"
+                                                                                                        onclick="getProgect(this)"
+                                                                                                        data-id="0"
+                                                                                                        data-rayon-id="0"
+                                                                                                        data-p-id="2074">
+            <p class="main-modal__title">Благоустройство набережной реки Оскол, г. Новый Оскол</p>
+            <p class="main-modal__subtitle">г. Новый Оскол</p></a><a href="#" class="main-modal__regions__header"
+                                                                     onclick="getProgect(this)" data-id="0"
+                                                                     data-rayon-id="0" data-p-id="2075"><p
+                class="main-modal__title">Место отдыха у рождественского мостика</p>
+            <p class="main-modal__subtitle">г. Новый Оскол, Набережная</p></a><a href="#"
+                                                                                 class="main-modal__regions__header"
+                                                                                 onclick="getProgect(this)" data-id="0"
+                                                                                 data-rayon-id="0" data-p-id="2260"><p
+                class="main-modal__title">Ремонт кровли Дома культуры в селе Николаевка</p>
+            <p class="main-modal__subtitle">Белгородская область, Новооскольский район, с.Николаевка, ул. Василия
+                Мартыненко, д. 6</p></a><a href="#" class="main-modal__regions__header" onclick="getProgect(this)"
+                                           data-id="0" data-rayon-id="0" data-p-id="2262"><p class="main-modal__title">
+            Ремонт дворовой территории по ул. Кирзаводская (д.3А, 5,9,11) в г. Новый Оскол</p>
+            <p class="main-modal__subtitle">Белгородская область, г. Новый Оскол, ул. Кирзаводская, д. 3А, 5, 9, 11</p>
+        </a><a href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="0" data-rayon-id="0"
+               data-p-id="2277"><p class="main-modal__title">Строительство ФАП в с. Холки Чернянского района</p>
+            <p class="main-modal__subtitle">Белгородская область, Чернянский район, с.Холки, ул.Школьная</p></a><a
+                href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="0" data-rayon-id="0"
+                data-p-id="2278"><p class="main-modal__title">Строительство ФАП в с. Прилепы Чернянского района</p>
+            <p class="main-modal__subtitle">Белгородская область, Чернянский район, с.Прилепы, ул.Атаманская</p></a><a
+                href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="0" data-rayon-id="0"
+                data-p-id="2286"><p class="main-modal__title">Установка качелей в парке семья, в парке Сосновый, в
+            Центральном парке, парковой зоне в районе СОШ №3, в района ЦКР «Оскол»</p>
+            <p class="main-modal__subtitle">Белгородская область, г. Новый Оскол</p></a><a href="#"
+                                                                                           class="main-modal__regions__header"
+                                                                                           onclick="getProgect(this)"
+                                                                                           data-id="0" data-rayon-id="0"
+                                                                                           data-p-id="2289"><p
+                class="main-modal__title">Очистка пруда и благоустройства зоны отдыха в х. Березки</p>
+            <p class="main-modal__subtitle">Белгородская область, Новооскльский район, х. Березки</p></a><a href="#"
+                                                                                                            class="main-modal__regions__header"
+                                                                                                            onclick="getProgect(this)"
+                                                                                                            data-id="0"
+                                                                                                            data-rayon-id="0"
+                                                                                                            data-p-id="2291">
+            <p class="main-modal__title">Благоустройство места отдыха на реке Беленькая г. Новый Оскол, ул.
+                Челюскина</p>
+            <p class="main-modal__subtitle">г. Новый Оскол, ул. Челюскина</p></a><a href="#"
+                                                                                    class="main-modal__regions__header"
+                                                                                    onclick="getProgect(this)"
+                                                                                    data-id="0" data-rayon-id="0"
+                                                                                    data-p-id="2292"><p
+                class="main-modal__title">Обустройство рекреационной зоны «Бурунок» в с. Великомихайловка</p>
+            <p class="main-modal__subtitle">Белгородская область, Новооскольский район, с. Великомихайловка</p></a><a
+                href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="0" data-rayon-id="0"
+                data-p-id="2426"><p class="main-modal__title">Благоустройство универсальной спортивно-игровой площадки
+            по ул. Рождественская в мкр. Юбилейный г. Губкин</p>
+            <p class="main-modal__subtitle">г. Губкин , мкр. Юбилейный</p></a><a href="#"
+                                                                                 class="main-modal__regions__header"
+                                                                                 onclick="getProgect(this)" data-id="0"
+                                                                                 data-rayon-id="0" data-p-id="2427"><p
+                class="main-modal__title">Благоустройство детской площадки по ул. Комарова в районе жилых домов № 1, № 2
+            в г. Губкин</p>
+            <p class="main-modal__subtitle">г. Губкин, ул. Комарова</p></a><a href="#"
+                                                                              class="main-modal__regions__header"
+                                                                              onclick="getProgect(this)" data-id="0"
+                                                                              data-rayon-id="0" data-p-id="2483"><p
+                class="main-modal__title">Ремонт автодороги Короча-Губкин-граница Курской области»-Загорье-Истобное</p>
+            <p class="main-modal__subtitle">Губкинский городской округ, Загорье-Истобное, км 0+000 - км 7+240</p></a><a
+                href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="0" data-rayon-id="0"
+                data-p-id="2494"><p class="main-modal__title">Ремонт автодороги Чернянка-Ездочное</p>
+            <p class="main-modal__subtitle">Чернянский район, км 0+000 - км 2+970</p></a><a href="#"
+                                                                                            class="main-modal__regions__header"
+                                                                                            onclick="getProgect(this)"
+                                                                                            data-id="0"
+                                                                                            data-rayon-id="0"
+                                                                                            data-p-id="2495"><p
+                class="main-modal__title">Ремонт автодороги Кочегуры - Огибное - Волково</p>
+            <p class="main-modal__subtitle">Чернянский район, км 0+000 - км 11+200</p></a><a href="#"
+                                                                                             class="main-modal__regions__header"
+                                                                                             onclick="getProgect(this)"
+                                                                                             data-id="0"
+                                                                                             data-rayon-id="0"
+                                                                                             data-p-id="2505"><p
+                class="main-modal__title">Ремонт автодороги Муром - Зиборовка Шебекинский городской округ, км 0+000 - км
+            6+900</p>
+            <p class="main-modal__subtitle">Шебекинский городской округ, км 0+000 - км 6+900</p></a><a href="#"
+                                                                                                       class="main-modal__regions__header"
+                                                                                                       onclick="getProgect(this)"
+                                                                                                       data-id="0"
+                                                                                                       data-rayon-id="0"
+                                                                                                       data-p-id="2772">
+            <p class="main-modal__title">Благоустройство общественной территории в районе жилого дома №10 по ул.
+                Ударников, мкр. Лукьяновка в г. Губкине Белгородской области</p>
+            <p class="main-modal__subtitle">Белгородская область, г. Губкин, мкр. Лукьяновка</p></a></div>
+    </div>
+</div>
+
+<div class="main-modal project-modal">
+    <div class="main-modal__content">
+        <a href="#" class="close-project-modal back-btn">Назад</a>
+        <div class="project-modal__content"></div>
+
+        <div class="mt-2 mb-3 expertise">
+            <p class="expertise__title">Не нашли объект? Есть идея? Отправьте ее в «Народную экспертизу».</p>
+            <a href="https://narod-expert.ru/vse-idei/?utm=123456" class="expertise__btn"
+               style="background-color: #F2F2F2; color: #4F4F4F;"><img src="static/img/expertise.png" alt="">Народная
+                экспертиза</a>
+        </div>
+        <div class="mobile-map">
+            <div id="mobile_map" style="width: 100%; height: 400px;"></div>
+        </div>
+    </div>
+</div>
+
+<div class="main-modal d-none" id="myModal">
+    <div class="main-modal__content">
+
+
+        <div class="main-modal__header">
+
+            <h4 class="main-modal__title" id="myModalLabel"></h4>
+            <p class="main-modal__subtitle"></p>
+        </div>
+
+
+    </div>
+</div>
+
+
+<script>
+    function getInfo(id) {
+        event.preventDefault();
+
+    }
+
+    $("a[data-toggle='modal']").bind("click", function () {
+        var id = $(this).attr('data-id');
+        $.ajax({
+            url: "test",
+            cache: false,
+            data: {id: id},
+            type: "GET",
+            success: function (html) {
+                $('.modal__content').html(html);
+            }
+        });
+    });
+
+    // $(document).ready(function () {
+    //     $('#completeProjectsModal').modal('show');
+    // })
+
+
+</script>
+
+<div class="modal" tabindex="-1" role="dialog" id="modalImg">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="#" id="modalImg__img" class="modal__img" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="static/js/popper.min.js"></script>
+<script type="text/javascript" src="static/js/main.js"></script>
+
+<script type="text/javascript" src="static/js/parallax.js_1.5.0/parallax.min.js"></script>
+<script type="text/javascript" src="static/js/simpleParallax/simpleParallax.min.js"></script>
+
+<script type="text/javascript" src="static/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="static/js/main.js"></script>
+
+<script type="text/javascript" src="static/js/ie10-viewport-bug-workaround.js"></script>
+
+<script type="text/javascript" src="static/js/uikit-3.3.3/js/uikit.min.js"></script>
+
+
+</body>
+</html>
