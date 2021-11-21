@@ -9626,13 +9626,14 @@ body p {
 
 .header__info-item {
   display: flex;
-  align-items: center;
+  /*align-items: center;*/
   justify-content: center;
-  /*padding: 0 2rem;*/
+  padding: 0 2rem;
 }
 
 .header__info-item-wrapper {
-  margin: 0 2rem;
+  margin: 0 1rem;
+  width: 33.3%;
 }
 
 .header__first-title {
@@ -9663,11 +9664,10 @@ body p {
   align-items: center;
   justify-content: flex-end;
   height: 100%;
-  padding: 1rem;
 }
 
 .header-slider .uk-width {
-  padding: 0 4rem;
+  /*padding: 0 2rem;*/
 }
 
 .header__sub-title {
@@ -10507,10 +10507,13 @@ a.main-modal__title {
 
 @media screen and (max-width: 1340px) {
   .header__info-item-wrapper {
-    margin: 0 1.5rem;
+    margin: 0 1rem;
+  }
+  .header-title-link {
+    font-size: 0.785rem;
   }
   .header-slider .uk-width {
-    padding: 0 2rem;
+    /*padding: 0 2rem;*/
   }
 }
 
