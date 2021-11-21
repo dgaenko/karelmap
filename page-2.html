@@ -27,11 +27,12 @@
                     <img class="header__logo"
                          src="static/img/logo.svg">
                 </picture>
+                <h2 class="header-title-link">Интерактивная карта по реализации в Республике Карелия национальных проектов</h2>
             </a>
         </div>
 
 
-        <div class="col-9 col-lg-9 ml-auto">
+        <div class="col-8 col-lg-8 ml-auto">
             <div class="ml-auto header__info">
                 <div class="row">
                     <div class="header-slider uk-position-relative uk-visible-toggle" tabindex="-1"
@@ -363,7 +364,42 @@
                 В рамках программы создание и обустройство зон отдыха, спортивных и детских игровых площадок, площадок для занятия адаптивной физической культурой и адаптивным спортом для лиц с ограниченными возможностями здоровья. Информация представлена департаментом агропромышленного комплекса и воспроизводства окружающей среды Белгородской области.</p>
 
 
-            <div class="uk-child-width-1-3 uk-grid uk-grid-stack" uk-grid="" uk-lightbox="animation: fade">
+            <div>
+                <p class="main-modal__body__title my-2">Было:</p>
+            </div>
+            <div class="uk-child-width-1-3 uk-grid" data-gallery="gallery-name" uk-grid="test" uk-lightbox="animation: fade">
+
+                <div class="uk-first-column">
+
+                    <a class="uk-inline" href="media/project_map_media/2021/img-20211006-wa0011.jpg.700x471_q85.jpg">
+
+                        <img src="media/project_map_media/2021/img-20211006-wa0011.jpg.700x471_q85.jpg" class="main-modal__body__img" alt="">
+                    </a>
+                </div>
+
+                <div>
+
+                    <a class="uk-inline" href="media/project_map_media/2021/img-20211006-wa0015.jpg.700x471_q85.jpg">
+
+                        <img src="media/project_map_media/2021/img-20211006-wa0015.jpg.700x471_q85.jpg" class="main-modal__body__img" alt="">
+                    </a>
+                </div>
+
+                <div>
+
+                    <a class="uk-inline" href="media/project_map_media/2021/img-20211006-wa0011.jpg.700x471_q85.jpg">
+
+                        <img src="media/project_map_media/2021/img-20211006-wa0011.jpg.700x471_q85.jpg" class="main-modal__body__img" alt="">
+                    </a>
+                </div>
+
+                <div class="uk-grid-margin uk-first-column">
+
+                    <a class="uk-inline" href="media/project_map_media/2021/img-20211006-wa0011.jpg.700x471_q85.jpg">
+
+                        <img src="media/project_map_media/2021/img-20211006-wa0011.jpg.700x471_q85.jpg" class="main-modal__body__img" alt="">
+                    </a>
+                </div>
 
             </div>
 
@@ -408,6 +444,8 @@
             </div>
         </div>
 
+        <a id="camera-modal-link" class="camera-modal-link">Ссылка на онлайн-камеру проекта</a>
+
         <div class="mt-2 mb-3 expertise">
             <p class="expertise__title">Не нашли объект? Есть идея? Отправьте ее в «Народную экспертизу».</p>
             <a href="https://narod-expert.ru/vse-idei/?utm=123456" class="expertise__btn" style="background-color: #F2F2F2; color: #4F4F4F;"><img src="static/img/expertise.png" alt="">Народная экспертиза</a>
@@ -418,17 +456,22 @@
     </div>
 </div>
 
-<div class="main-modal d-none" id="myModal">
-    <div class="main-modal__content">
-
-
-        <div class="main-modal__header">
-
-            <h4 class="main-modal__title" id="myModalLabel"></h4>
-            <p class="main-modal__subtitle"></p>
+<div class="modal fade" id="camera-modal" tabindex="-1" role="dialog" aria-modal="true" style="display: none;">
+    <div class="modal-dialog modal-lg modal-dialog-centered camera-wrapper">
+        <div class="modal-content position-relative">
+            <div class="py-2 d-block d-md-none">
+                <img src="/static/img/regip2021.svg" style="height: 48px;" alt="">
+            </div>
+            <div class="modal-header px-0">
+                <h5 class="modal-title" id="exampleModalLongTitle" style="font-weight: bold">Онлайн камера объекта:</h5>
+                <button type="button" class="close d-none d-md-block" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="webcam-block-wrapper">
+                <iframe src="https://www.geocam.ru/js/player/playerjs.html?file=https://s2.moidom-stream.ru/s/public/0000001203.m3u8&poster=https://s2.moidom-stream.ru/s/public/0000001203.jpg" width="680" height="510" frameborder="0" allowfullscreen="true"></iframe>
+            </div>
         </div>
-
-
     </div>
 </div>
 
@@ -451,10 +494,11 @@
             }
         });
     });
+    //
 
-    // $(document).ready(function () {
-    //     $('#completeProjectsModal').modal('show');
-    // })
+    $('#camera-modal-link').bind('click', function () {
+        $('#camera-modal').modal('show');
+    })
 
 
 </script>

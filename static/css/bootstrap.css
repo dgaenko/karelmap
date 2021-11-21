@@ -9574,9 +9574,44 @@ body p {
 }
 
 .header__logo-link {
-  display: block;
+  display: flex;
   height: 112px;
   padding: 20px 0;
+  align-items: center;
+}
+
+.header-title-link {
+  margin-bottom: 0;
+  margin-left: 1rem;
+  font-size: 1rem;
+  color: #000;
+}
+
+.camera-wrapper {
+  height: 520px;
+}
+
+.camera-wrapper iframe {
+  height: 100% !important;
+}
+
+.webcam-block-wrapper {
+  max-width: 100%;
+  height: 100%;
+  width: 100%;
+}
+
+
+.camera-wrapper .modal-content {
+  height: 100%;
+}
+
+.camera-modal-link {
+  font-size: 0.865rem;
+  color: #0293dd;
+  display: block;
+  margin: 1rem 0;
+  cursor: pointer;
 }
 
 .header__logo {
@@ -9586,6 +9621,7 @@ body p {
   object-fit: contain;
   -o-object-position: left;
   object-position: left;
+  max-width: 106px;
 }
 
 .header__info-item {
