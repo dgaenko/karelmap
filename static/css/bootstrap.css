@@ -5147,8 +5147,9 @@ button.close {
 }
 
 @media (min-width: 576px) {
+
   .modal-dialog {
-    max-width: 500px;
+    max-width: 100%;
     margin: 1.75rem auto;
   }
   .modal-dialog-scrollable {
@@ -10303,6 +10304,44 @@ a.main-modal__title {
   margin: 15px 0 !important;
 }
 
+.list-navigation-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 2px solid #e1e0e0;
+  margin: 0 -30px;
+  padding: 16px 30px 0;
+}
+
+.list-navigation-link {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  color: #828282;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.list-navigation-link.next {
+  text-align: right;
+}
+
+.list-navigation-link.back::before {
+  content: url(../img/arrow_to_back.svg);
+  margin-right: 12px;
+  margin-top: 2px;
+}
+
+.list-navigation-link.next::after {
+  content: url(../img/arrow_to_back.svg);
+  transform: scale(-1);
+  margin-left: 12px;
+  margin-top: 2px;
+}
+
 .modal__img {
   width: 100%;
   height: 0;
@@ -10432,6 +10471,7 @@ a.main-modal__title {
   animation-timing-function: ease-in-out;
 }
 
+
 @-webkit-keyframes spin {
   0% {
     transform: rotateZ(0);
@@ -10523,10 +10563,28 @@ a.main-modal__title {
   }
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 992px) {
   .header {
-    height: 60px;
+    height: 70px;
   }
+  .header picture {
+    flex-shrink: 0;
+  }
+  .header__logo {
+    max-width: 34px;
+  }
+  .webcam-block-wrapper iframe {
+    max-width: 100% !important;
+  }
+
+}
+
+@media screen and (max-width: 1023px) {
+  .header .header-logo-col {
+    display: flex;
+    align-items: center;
+  }
+
   .header__logo-link {
     height: 60px;
     width: auto;

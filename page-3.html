@@ -10,17 +10,20 @@
     <title>Карта региональных инфраструктурных проектов</title>
     <link rel="icon" href="media/project_map_media/2021/3/3/favicon.ico" type="image/x-icon">
     <link type="text/css" href="static/css/bootstrap.css" rel="stylesheet">
+    <link type="text/css" href="static/css/fancybox.css" rel="stylesheet">
+
     <script src="https://api-maps.yandex.ru/2.1/?apikey=a2718abd-328d-4bd5-a0e1-f246345a30d4&lang=ru_RU" type="text/javascript"></script>
     <!--    Скрипты карты-->
     <script>window.jQuery || document.write('<script src="static/js/jquery-3.4.1.min.js"><\/script>')</script>
     <script src="static/js/map.js"></script>
+    <!---->
     <link type="text/css" href="static/js/uikit-3.3.3/css/uikit.css" rel="stylesheet">
 
 </head>
 <body style="min-height: 100vh;">
 <div class="header container-fluid">
     <div class="row h-100">
-        <div class="col-auto col-lg-3">
+        <div class="col-auto col-lg-3 header-logo-col">
             <a href="index.html" class="text-decoration-none header__logo-link">
                 <picture>
                     <source srcset="static/img/logo.svg" media="(max-width: 1023px)">
@@ -355,33 +358,6 @@
     </div>
 </div>
 
-
-<script>
-    function getInfo(id) {
-        event.preventDefault();
-
-    }
-
-    $("a[data-toggle='modal']").bind("click", function () {
-        var id = $(this).attr('data-id');
-        $.ajax({
-            url: "test",
-            cache: false,
-            data: {id: id},
-            type: "GET",
-            success: function (html) {
-                $('.modal__content').html(html);
-            }
-        });
-    });
-
-    // $(document).ready(function () {
-    //     $('#completeProjectsModal').modal('show');
-    // })
-
-
-</script>
-
 <div class="modal" tabindex="-1" role="dialog" id="modalImg">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -402,12 +378,10 @@
 <script type="text/javascript" src="static/js/popper.min.js"></script>
 <script type="text/javascript" src="static/js/main.js"></script>
 
-<script type="text/javascript" src="static/js/parallax.js_1.5.0/parallax.min.js"></script>
-<script type="text/javascript" src="static/js/simpleParallax/simpleParallax.min.js"></script>
-
 <script type="text/javascript" src="static/js/bootstrap.js"></script>
 
 <script type="text/javascript" src="static/js/main.js"></script>
+<script type="text/javascript" src="static/js/fancybox.umd.js"></script>
 
 <script type="text/javascript" src="static/js/ie10-viewport-bug-workaround.js"></script>
 
