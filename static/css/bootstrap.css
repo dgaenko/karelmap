@@ -9817,7 +9817,7 @@ body p {
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
-  height: 64px;
+  height: 66px;
   line-height: 20px;
   text-align: left;
   /*padding: 0 48px 0 16px;*/
@@ -9831,7 +9831,7 @@ body p {
   display: flex;
   align-items: center;
   background: #fff;
-  padding: 0 32px 0 16px;
+  padding: 0 20px 0 16px;
   height: 100%;
   width: calc(100% - 32px);
 }

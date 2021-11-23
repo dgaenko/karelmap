@@ -100,67 +100,101 @@
                     9</a></div>
 
                 <div id="categories" class="position-relative">
-                    <div class="region-info">
-                        <div><p class="region-info__count">355</p>
-                            <p class="region-info__subtitle">всего объектов</p></div>
-                        <div><p class="region-info__count">4 024 330,9 тыс.руб.</p>
-                            <p class="region-info__subtitle">объем финансирования</p></div>
+                    <p class="categories__list-title">Список всех объектов</p>
+                    <div class="my-1">
+                        <a class="category_btn" onclick="getCategory(this)" data-id="1" data-rayon-id="0"
+                           style="background-color: #FFAC59;">
+                            <div class="category_btn-inner">
+                                <img src="media/category_icons/culture.png" alt="">
+                                <div>Культура <span class="font-weight-normal">(206)</span></div>
+                            </div>
+                        </a>
                     </div>
-                    <div><a class="category_btn my-1" onclick="getCategory(this)" data-id="1" data-rayon-id="23"
-                            style="background-color: #FFAC59" value="1"> <img
-                            src="media/category_icons/culture.png" alt="">
-                        <div>Культура <span class="font-weight-normal">(33)</span></div>
+
+                    <div class="my-1">
+                        <a class="category_btn" onclick="getCategory(this)" data-id="2" data-rayon-id="0"
+                           style="background-color: #77D998;">
+                            <div class="category_btn-inner">
+                                <img src="media/category_icons/digital_economy.png" alt="">
+                                <div>Цифровая экономика <span class="font-weight-normal">(65)</span></div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="my-1"><a class="category_btn" onclick="getCategory(this)" data-id="3" data-rayon-id="0"
+                                         style="background-color: #BF8760;">
+                        <div class="category_btn-inner">
+                            <img src="media/category_icons/education.png" alt="">
+                            <div>Образование <span class="font-weight-normal">(86)</span></div>
+                        </div>
+
                     </a></div>
-                    <div><a class="category_btn my-1" onclick="getCategory(this)" data-id="2" data-rayon-id="23"
-                            style="background-color: #77D998" value="2"> <img
-                            src="media/category_icons/digital_economy.png" alt="">
-                        <div>Цифровая экономика <span class="font-weight-normal">(7)</span></div>
+
+                    <div class="my-1"><a class="category_btn" onclick="getCategory(this)" data-id="4" data-rayon-id="0"
+                                         style="background-color: #F26549;">
+                        <div class="category_btn-inner">
+                            <img src="media/category_icons/urban_environment.png" alt="">
+                            <div>Жилье и городская среда <span class="font-weight-normal">(49)</span></div>
+                        </div>
                     </a></div>
-                    <div><a class="category_btn my-1" onclick="getCategory(this)" data-id="3" data-rayon-id="23"
-                            style="background-color: #BF8760" value="3"> <img
-                            src="media/category_icons/education.png" alt="">
-                        <div>Образование <span class="font-weight-normal">(4)</span></div>
+
+                    <div class="my-1"><a class="category_btn" onclick="getCategory(this)" data-id="5" data-rayon-id="0"
+                                         style="background-color: #B5D96C;">
+                        <div class="category_btn-inner">
+                            <img src="media/category_icons/ecology.png" alt="">
+                            <div>Экология <span class="font-weight-normal">(15)</span></div>
+                        </div>
                     </a></div>
-                    <div><a class="category_btn my-1" onclick="getCategory(this)" data-id="4" data-rayon-id="23"
-                            style="background-color: #F26549" value="4"> <img
-                            src="media/category_icons/urban_environment.png" alt="">
-                        <div>Жилье и городская среда <span class="font-weight-normal">(17)</span></div>
+
+                    <div class="my-1"><a class="category_btn" onclick="getCategory(this)" data-id="6" data-rayon-id="0"
+                                         style="background-color: #D99A41;">
+                        <div class="category_btn-inner">
+                            <img src="media/category_icons/business.png" alt="">
+                            <div>Малое и среднее предпринимательство <span class="font-weight-normal">(69)</span></div>
+                        </div>
                     </a></div>
-                    <div><a class="category_btn my-1" onclick="getCategory(this)" data-id="6" data-rayon-id="23"
-                            style="background-color: #B5D96C" value="6"> <img
-                            src="media/category_icons/ecology.png" alt="">
-                        <div>Экология <span class="font-weight-normal">(3)</span></div>
+
+                    <div class="my-1"><a class="category_btn" onclick="getCategory(this)" data-id="7" data-rayon-id="0"
+                                         style="background-color: #99918A;">
+                        <div class="category_btn-inner">
+                            <img src="media/category_icons/health_care.png" alt="">
+                            <div>Здравоохранение <span class="font-weight-normal">(500)</span></div>
+                        </div>
                     </a></div>
-                    <div><a class="category_btn my-1" onclick="getCategory(this)" data-id="6" data-rayon-id="23"
-                            style="background-color: #D99A41" value="6"> <img
-                            src="media/category_icons/business.png" alt="">
-                        <div>Малое и среднее предпринимательство <span class="font-weight-normal">(3)</span></div>
+
+                    <div class="my-1"><a class="category_btn" onclick="getCategory(this)" data-id="8" data-rayon-id="0"
+                                         style="background-color: #D9D941;">
+                        <div class="category_btn-inner">
+                            <img src="media/category_icons/demography.png" alt="">
+                            <div>Демография <span class="font-weight-normal">(792)</span></div>
+                        </div>
                     </a></div>
-                    <div><a class="category_btn my-1" onclick="getCategory(this)" data-id="7" data-rayon-id="23"
-                            style="background-color: #99918A" value="7"> <img
-                            src="media/category_icons/health_care.png" alt="">
-                        <div>Здравоохранение <span class="font-weight-normal">(45)</span></div>
+
+                    <div class="my-1"><a class="category_btn" onclick="getCategory(this)" data-id="9" data-rayon-id="0"
+                                         style="background-color: #B8A3CC;">
+                        <div class="category_btn-inner">
+                            <img src="media/category_icons/roads.png" alt="">
+                            <div>Безопасные качественные дороги <span class="font-weight-normal">(259)</span></div>
+                        </div>
                     </a></div>
-                    <div><a class="category_btn my-1" onclick="getCategory(this)" data-id="8" data-rayon-id="23"
-                            style="background-color: #D9D941" value="8"> <img
-                            src="media/category_icons/demography.png" alt="">
-                        <div>Демография <span class="font-weight-normal">(43)</span></div>
+
+                    <div class="my-1"><a class="category_btn" onclick="getCategory(this)" data-id="12" data-rayon-id="0"
+                                         style="background-color: #FFCC99;">
+                        <div class="category_btn-inner">
+                            <img src="media/category_icons/export.png" alt="">
+                            <div>Международная кооперация и экспорт <span class="font-weight-normal">(216)</span></div>
+                        </div>
                     </a></div>
-                    <div><a class="category_btn my-1" onclick="getCategory(this)" data-id="9" data-rayon-id="23"
-                            style="background-color: #B8A3CC" value="9"> <img
-                            src="media/category_icons/roads.png" alt="">
-                        <div>Безопасные качественные дороги <span class="font-weight-normal">(79)</span></div>
+
+                    <div class="my-1"><a class="category_btn" onclick="getCategory(this)" data-id="10" data-rayon-id="0"
+                                         style="background-color: #BFBFBF;">
+                        <div class="category_btn-inner">
+                            <img src="media/category_icons/employment_support.png" alt="">
+                            <div>Производительность труда и поддержка занятости <span class="font-weight-normal">(65)</span></div>
+                        </div>
+
                     </a></div>
-                    <div><a class="category_btn my-1" onclick="getCategory(this)" data-id="10" data-rayon-id="23"
-                            style="background-color: #FFCC99" value="10"> <img
-                            src="media/category_icons/export.png" alt="">
-                        <div>Международная кооперация и экспорт <span class="font-weight-normal">(11)</span></div>
-                    </a></div>
-                    <div><a class="category_btn my-1" onclick="getCategory(this)" data-id="12" data-rayon-id="23"
-                            style="background-color: #BFBFBF" value="12"> <img
-                            src="media/category_icons/employment_support.png" alt="">
-                        <div>Производительность труда и поддержка занятости <span class="font-weight-normal">(19)</span></div>
-                    </a></div>
+
                 </div>
 
                 <div class="mt-2 mb-3 expertise">
