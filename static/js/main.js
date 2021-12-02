@@ -19,17 +19,3 @@ function getImgModal(e) {
 $('#camera-modal-link').bind('click', function () {
     $('#camera-modal').modal('show');
 })
-
-// Код для модалок
-// $("a[data-toggle='modal']").bind("click", function () {
-//     var id = $(this).attr('data-id');
-//     $.ajax({
-//         url: "test",
-//         cache: false,
-//         data: {id: id},
-//         type: "GET",
-//         success: function (html) {
-//             $('.modal__content').html(html);
-//         }
-//     });
-// });
