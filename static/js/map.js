@@ -23315,6 +23315,8 @@ function init(){
 
 $(document).ready(function() {
     $('.region_btn').unbind("click").click (function () {
+        return;
+
         event.preventDefault();
 
         closeCompletedFunction();
@@ -53820,6 +53822,7 @@ function getProgect(e) {
 }
 
 function getCategory(e) {
+return;
     event.preventDefault();
     closeCompletedFunction();
     var data_rayon_id = 0;
@@ -54063,6 +54066,7 @@ function mapprojectFunction(r_id, c_id, p_id) {
 
 
 function getCompletedFunction(r_id = 0, c_id = 0) {
+    return;
     if (event) {
         event.preventDefault();
     }
