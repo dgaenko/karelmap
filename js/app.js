@@ -170,6 +170,7 @@ const app = {
 
     loadRegion: function (region_id) {
         this.dd("loadRegion id:" + region_id);
+        if (!region_id) return;
         onSpinner();
         this.loadObjectsList(region_id);
         const url = this.apiUrl() + "getRegion.php?id=" + region_id;
@@ -184,10 +185,10 @@ const app = {
                 const html = app.render("#tpl_region", response);
                 $(".section_region").html(html);
                 app.loadCategories(region_id, ".section_region .list");
-                $(".section_region .get-regions").click(function (){
+                $(".section_region .get-regions").unbind("click").click(function (){
                     app.showRegionsModal(true);
                 });
-                $(".section_region .back-btn").click(function () {
+                $(".section_region .back-btn").unbind("click").click(function () {
                     event.preventDefault();
                     $(".section_cats").fadeIn();
                     $(".section_region").fadeOut();
@@ -196,12 +197,14 @@ const app = {
                     app.region_id = 0;
                     app.loadObjectsList();
                 });
-                if (response.region.objects_realized_count)
-                $(".section_region .expertise__btn").click(function (){
-                    event.preventDefault();
-                    const region_id = $(this).attr("data-id");
-                    app.loadReleasedObjects(region_id, 0, true);
-                });
+                if (response.region.objects_realized_count) {
+                    $(".section_region .expertise__btn").unbind("click").click(function () {
+                        event.preventDefault();
+                        const region_id = $(this).attr("data-id");
+                        app.cat_id = 0;
+                        app.loadReleasedObjects(region_id, app.cat_id, true);
+                    });
+                }
                 offSpinner();
             })
             .fail(function(jqXHR, textStatus, errorThrown) {
@@ -378,6 +381,7 @@ const app = {
             app.showCompletedModal(false);
             app.showCategoryModal(false);
             app.loadObjectsList(app.region_id);
+            app.loadRegion(app.region_id);
         });
         $(".section_cats .expertise__btn").click(function (){
             event.preventDefault();
@@ -385,6 +389,7 @@ const app = {
             app.loadReleasedObjects(0, 0, true);
         });
         $(".project-modal .back-btn").click(function (){
+            app.loadRegion(app.region_id);
             app.loadObjectsList(app.region_id, app.cat_id);
             app.showProjectModal(false);
         });

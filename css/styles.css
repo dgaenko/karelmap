@@ -2,10 +2,6 @@
     fill: red;
 }
 
-.category_btn-inner {
-/*    background-color: lightgrey; */
-}
-
 .region_btn, .gray_btn {
     background-color: #F2F2F2;
     color: #4F4F4F;
@@ -28,4 +24,12 @@
 .ymaps-2-1-79-gotoymaps__container,
 .ymaps-2-1-79-gototech {
     display: none !important;
+}
+
+.list-navigation-link.next {
+    margin-bottom: 0;
+}
+
+.project-modal {
+    z-index: 1000;
 }

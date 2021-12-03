@@ -5,6 +5,7 @@ const map = {
     center: [63.83908350210848, 34.41274809002659],
     fillColor: "#0074e8",
     zoom: 6,
+    single_zoom: 16,
 
     dd: function () {
         for (let i = 0; i < arguments.length; i++) {
@@ -15,7 +16,8 @@ const map = {
     init: function () {
         this.dd("init");
         ymaps.ready(function () {
-            map.myMap = new ymaps.Map('map', {
+            const mapid = $(window).width() > 1023 ? "map" : "mobile_map";
+            map.myMap = new ymaps.Map(mapid, {
                 center: map.center,
                 zoom: map.zoom,
                 controls: ['rulerControl', 'zoomControl', 'geolocationControl', 'typeSelector']
@@ -137,7 +139,7 @@ const map = {
                 iconColor: objects[i].color
             });
             geoObjects[i].obj_id = objects[i].id;
-            geoObjects[i].events.add('click', function(e) {
+            geoObjects[i].events.add('click', function (e) {
                 let target = e.get('target');
                 app.showObjectInfo(target.obj_id);
             });
@@ -145,7 +147,12 @@ const map = {
         this.clusterer.add(geoObjects);
         this.myMap.geoObjects.add(this.clusterer);
         //this.myMap.setBounds(this.clusterer.getBounds(), { checkZoomRange: true });
-        this.adjustMapBounds();
+        if (objects.length > 1) {
+            this.adjustMapBounds();
+        } else {
+            coords = objects[0].map_coordinates.split(",");
+            this.myMap.setCenter(coords, map.single_zoom);
+        }
     },
 
 }
