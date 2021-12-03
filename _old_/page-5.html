@@ -8,27 +8,27 @@
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Карта региональных инфраструктурных проектов</title>
-    <link rel="icon" href="media/project_map_media/2021/3/3/favicon.ico" type="image/x-icon">
-    <link type="text/css" href="static/css/bootstrap.css" rel="stylesheet">
-    <link type="text/css" href="static/css/fancybox.css" rel="stylesheet">
+    <link rel="icon" href="../media/project_map_media/2021/3/3/favicon.ico" type="image/x-icon">
+    <link type="text/css" href="../static/css/bootstrap.css" rel="stylesheet">
+    <link type="text/css" href="../static/css/fancybox.css" rel="stylesheet">
 
     <script src="https://api-maps.yandex.ru/2.1/?apikey=a2718abd-328d-4bd5-a0e1-f246345a30d4&lang=ru_RU" type="text/javascript"></script>
     <!--    Скрипты карты-->
-    <script>window.jQuery || document.write('<script src="static/js/jquery-3.4.1.min.js"><\/script>')</script>
-    <script src="static/js/map.js"></script>
+    <script>window.jQuery || document.write('<script src="../static/js/jquery-3.4.1.min.js"><\/script>')</script>
+    <script src="../static/js/map.js"></script>
     <!---->
-    <link type="text/css" href="static/js/uikit-3.3.3/css/uikit.css" rel="stylesheet">
+    <link type="text/css" href="../static/js/uikit-3.3.3/css/uikit.css" rel="stylesheet">
 
 </head>
 <body style="min-height: 100vh;">
 <div class="header container-fluid">
     <div class="row h-100">
-        <div class="col-auto col-lg-4 col-xl-4 header-logo-col">
+        <div class="col-auto col-lg-3 header-logo-col">
             <a href="index.html" class="text-decoration-none header__logo-link">
                 <picture>
-                    <source srcset="static/img/logo.svg" media="(max-width: 1023px)">
+                    <source srcset="../static/img/logo.svg" media="(max-width: 1023px)">
                     <img class="header__logo"
-                         src="static/img/logo.svg">
+                         src="../static/img/logo.svg">
                 </picture>
                 <h2 class="header-title-link">Интерактивная карта по реализации в Республике Карелия национальных проектов</h2>
             </a>
@@ -85,17 +85,19 @@
     </div>
 </div>
 
+
 <div class="" style="min-height: 100%;">
     <div class="main-content">
         <div class="sidebar">
             <div class="projects_list">
-                <div class="to-back-wrap"></div>
+                <div class="to-back-wrap"><a href="/" class="back-btn">Назад к региону</a></div>
                 <div class="mt-1 mb-2"><a class="get-regions" style="background-color: #F2F2F2; color: #4F4F4F;"><img
-                        src="static/img/gerb.png" alt="">Выбрать муниципальное образование</a></div>
-                <div class="mb-3 btn-complete-project"><a href="#" class="expertise__btn"
+                        src="../media/regions_images/gerb1.png" alt="">Сортавальский район</a></div>
+
+                <div class="mb-3 btn-complete-project"><a href="#" class="expertise__btn my-2"
                                                           style="background-color: #F2F2F2; color: #4F4F4F;"
-                                                          onclick="getCompletedFunction()">Реализованные объекты</a>
-                </div>
+                                                          onclick="getCompletedFunction(23, 0)">Завершенных объектов:
+                    9</a></div>
 
                 <div id="categories" class="position-relative">
                     <p class="categories__list-title">Список всех объектов</p>
@@ -103,7 +105,7 @@
                         <a class="category_btn" onclick="getCategory(this)" data-id="1" data-rayon-id="0"
                            style="background-color: #FFAC59;">
                             <div class="category_btn-inner">
-                                <img src="media/category_icons/culture.png" alt="">
+                                <img src="../media/category_icons/culture.png" alt="">
                                 <div>Культура <span class="font-weight-normal">(206)</span></div>
                             </div>
                         </a>
@@ -113,7 +115,7 @@
                         <a class="category_btn" onclick="getCategory(this)" data-id="2" data-rayon-id="0"
                            style="background-color: #77D998;">
                             <div class="category_btn-inner">
-                                <img src="media/category_icons/digital_economy.png" alt="">
+                                <img src="../media/category_icons/digital_economy.png" alt="">
                                 <div>Цифровая экономика <span class="font-weight-normal">(65)</span></div>
                             </div>
                         </a>
@@ -122,7 +124,7 @@
                     <div class="my-1"><a class="category_btn" onclick="getCategory(this)" data-id="3" data-rayon-id="0"
                                          style="background-color: #BF8760;">
                         <div class="category_btn-inner">
-                            <img src="media/category_icons/education.png" alt="">
+                            <img src="../media/category_icons/education.png" alt="">
                             <div>Образование <span class="font-weight-normal">(86)</span></div>
                         </div>
 
@@ -131,7 +133,7 @@
                     <div class="my-1"><a class="category_btn" onclick="getCategory(this)" data-id="4" data-rayon-id="0"
                                          style="background-color: #F26549;">
                         <div class="category_btn-inner">
-                            <img src="media/category_icons/urban_environment.png" alt="">
+                            <img src="../media/category_icons/urban_environment.png" alt="">
                             <div>Жилье и городская среда <span class="font-weight-normal">(49)</span></div>
                         </div>
                     </a></div>
@@ -139,7 +141,7 @@
                     <div class="my-1"><a class="category_btn" onclick="getCategory(this)" data-id="5" data-rayon-id="0"
                                          style="background-color: #B5D96C;">
                         <div class="category_btn-inner">
-                            <img src="media/category_icons/ecology.png" alt="">
+                            <img src="../media/category_icons/ecology.png" alt="">
                             <div>Экология <span class="font-weight-normal">(15)</span></div>
                         </div>
                     </a></div>
@@ -147,7 +149,7 @@
                     <div class="my-1"><a class="category_btn" onclick="getCategory(this)" data-id="6" data-rayon-id="0"
                                          style="background-color: #D99A41;">
                         <div class="category_btn-inner">
-                            <img src="media/category_icons/business.png" alt="">
+                            <img src="../media/category_icons/business.png" alt="">
                             <div>Малое и среднее предпринимательство <span class="font-weight-normal">(69)</span></div>
                         </div>
                     </a></div>
@@ -155,7 +157,7 @@
                     <div class="my-1"><a class="category_btn" onclick="getCategory(this)" data-id="7" data-rayon-id="0"
                                          style="background-color: #99918A;">
                         <div class="category_btn-inner">
-                            <img src="media/category_icons/health_care.png" alt="">
+                            <img src="../media/category_icons/health_care.png" alt="">
                             <div>Здравоохранение <span class="font-weight-normal">(500)</span></div>
                         </div>
                     </a></div>
@@ -163,7 +165,7 @@
                     <div class="my-1"><a class="category_btn" onclick="getCategory(this)" data-id="8" data-rayon-id="0"
                                          style="background-color: #D9D941;">
                         <div class="category_btn-inner">
-                            <img src="media/category_icons/demography.png" alt="">
+                            <img src="../media/category_icons/demography.png" alt="">
                             <div>Демография <span class="font-weight-normal">(792)</span></div>
                         </div>
                     </a></div>
@@ -171,7 +173,7 @@
                     <div class="my-1"><a class="category_btn" onclick="getCategory(this)" data-id="9" data-rayon-id="0"
                                          style="background-color: #B8A3CC;">
                         <div class="category_btn-inner">
-                            <img src="media/category_icons/roads.png" alt="">
+                            <img src="../media/category_icons/roads.png" alt="">
                             <div>Безопасные качественные дороги <span class="font-weight-normal">(259)</span></div>
                         </div>
                     </a></div>
@@ -179,7 +181,7 @@
                     <div class="my-1"><a class="category_btn" onclick="getCategory(this)" data-id="12" data-rayon-id="0"
                                          style="background-color: #FFCC99;">
                         <div class="category_btn-inner">
-                            <img src="media/category_icons/export.png" alt="">
+                            <img src="../media/category_icons/export.png" alt="">
                             <div>Международная кооперация и экспорт <span class="font-weight-normal">(216)</span></div>
                         </div>
                     </a></div>
@@ -187,7 +189,7 @@
                     <div class="my-1"><a class="category_btn" onclick="getCategory(this)" data-id="10" data-rayon-id="0"
                                          style="background-color: #BFBFBF;">
                         <div class="category_btn-inner">
-                            <img src="media/category_icons/employment_support.png" alt="">
+                            <img src="../media/category_icons/employment_support.png" alt="">
                             <div>Производительность труда и поддержка занятости <span class="font-weight-normal">(65)</span></div>
                         </div>
 
@@ -198,7 +200,7 @@
                 <div class="mt-2 mb-3 expertise">
                     <p class="expertise__title">Не нашли объект? Есть идея? Отправьте ее в «Народную экспертизу».</p>
                     <a href="https://narod-expert.ru/vse-idei/?utm=123456" class="expertise__btn"
-                       style="background-color: #F2F2F2; color: #4F4F4F;"><img src="static/img/expertise.png" alt="">Народная
+                       style="background-color: #F2F2F2; color: #4F4F4F;"><img src="../static/img/expertise.png" alt="">Народная
                         экспертиза</a>
                 </div>
             </div>
@@ -223,266 +225,194 @@
         <a href="#" class="close-regions back-btn">Назад</a>
 
         <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="1">
-            <img src="media/gerb-01.png" alt="">
+            <img src="../media/gerb-01.png" alt="">
             Алексеевский городской округ
         </a>
 
         <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="23">
-            <img src="media/gerb-02.png" alt="">
+            <img src="../media/gerb-02.png" alt="">
             Белгород
         </a>
 
         <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="2">
-            <img src="media/gerb-03.png" alt="">
+            <img src="../media/gerb-03.png" alt="">
             Белгородский район
         </a>
 
         <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="1">
-            <img src="media/gerb-01.png" alt="">
+            <img src="../media/gerb-01.png" alt="">
             Алексеевский городской округ
         </a>
 
         <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="23">
-            <img src="media/gerb-02.png" alt="">
+            <img src="../media/gerb-02.png" alt="">
             Белгород
         </a>
 
         <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="2">
-            <img src="media/gerb-03.png" alt="">
+            <img src="../media/gerb-03.png" alt="">
             Белгородский район
         </a>
 
         <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="1">
-            <img src="media/gerb-01.png" alt="">
+            <img src="../media/gerb-01.png" alt="">
             Алексеевский городской округ
         </a>
 
         <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="23">
-            <img src="media/gerb-02.png" alt="">
+            <img src="../media/gerb-02.png" alt="">
             Белгород
         </a>
 
         <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="2">
-            <img src="media/gerb-03.png" alt="">
+            <img src="../media/gerb-03.png" alt="">
             Белгородский район
         </a>
 
         <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="1">
-            <img src="media/gerb-01.png" alt="">
+            <img src="../media/gerb-01.png" alt="">
             Алексеевский городской округ
         </a>
 
         <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="23">
-            <img src="media/gerb-02.png" alt="">
+            <img src="../media/gerb-02.png" alt="">
             Белгород
         </a>
 
         <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="2">
-            <img src="media/gerb-03.png" alt="">
+            <img src="../media/gerb-03.png" alt="">
             Белгородский район
         </a>
 
         <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="1">
-            <img src="media/gerb-01.png" alt="">
+            <img src="../media/gerb-01.png" alt="">
             Алексеевский городской округ
         </a>
 
         <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="23">
-            <img src="media/gerb-02.png" alt="">
+            <img src="../media/gerb-02.png" alt="">
             Белгород
         </a>
 
         <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="2">
-            <img src="media/gerb-03.png" alt="">
+            <img src="../media/gerb-03.png" alt="">
             Белгородский район
         </a>
 
         <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="1">
-            <img src="media/gerb-01.png" alt="">
+            <img src="../media/gerb-01.png" alt="">
             Алексеевский городской округ
         </a>
 
         <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="23">
-            <img src="media/gerb-02.png" alt="">
+            <img src="../media/gerb-02.png" alt="">
             Белгород
         </a>
 
         <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="2">
-            <img src="media/gerb-03.png" alt="">
+            <img src="../media/gerb-03.png" alt="">
             Белгородский район
         </a>
 
         <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="1">
-            <img src="media/gerb-01.png" alt="">
+            <img src="../media/gerb-01.png" alt="">
             Алексеевский городской округ
         </a>
 
         <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="23">
-            <img src="media/gerb-02.png" alt="">
+            <img src="../media/gerb-02.png" alt="">
             Белгород
         </a>
 
         <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="2">
-            <img src="media/gerb-03.png" alt="">
+            <img src="../media/gerb-03.png" alt="">
             Белгородский район
         </a>
 
         <a href="#" class="region_btn my-1" style="background-color: #F2F2F2; color: #4F4F4F " data-id="1">
-            <img src="media/gerb-01.png" alt="">
+            <img src="../media/gerb-01.png" alt="">
             Алексеевский городской округ
         </a>
 
     </div>
 </div>
 
-<div class="main-modal category-modal active">
+<div class="main-modal category-modal">
     <div class="main-modal__content">
-        <a href="" class="close-category-modal back-btn">Назад</a>
-        <div class="category-modal__content">
-            <div>
-                <a href="#" class="expertise__btn my-2" style="background-color: #F2F2F2; color: #4F4F4F;" onclick="getCompletedFunction(0,1)">Завершенных объектов: 39</a>
-            </div>
-            <a href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="1" data-rayon-id="0"
-               data-p-id="3"><p class="main-modal__title">Дом-интернат для престарелых граждан и инвалидов на 200 мест в г. Костомукше</p>
-                <p class="main-modal__subtitle">Республика Карелия, г. Костомукша (кадастровый номер земельного участка 10:04:0010206:389)</p>
-            </a>
-            <a href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="1" data-rayon-id="0"
-               data-p-id="4"><p class="main-modal__title">Капитальный ремонт МОУ "Графовская СОШ", с. Графовка
-                Краснояружского
-                района</p>
-                <p class="main-modal__subtitle">Краснояружский муниципальный район, Сельское поселение Графовское,
-                    Графовка
-                    с, Центральная ул, дом 31</p>
-            </a>
-            <a href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="1" data-rayon-id="0"
-               data-p-id="5"><p class="main-modal__title">Центр дополнительного
-                образования детей "Дом Харитоненко"</p>
-                <p class="main-modal__subtitle">Краснояружский муниципальный район, Городское поселение поселок Красная
-                    Яруга, Красная Яруга п, Театральная ул, дом 7</p>
-            </a>
-            <a href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="1" data-rayon-id="0"
-               data-p-id="6"><p class="main-modal__title">Капитальный ремонт ДОУ № 6 г. Шебекино</p>
-                <p class="main-modal__subtitle">Шебекинский район, г. Шебекино ул. Дзержинского, 15</p>
-            </a>
-            <a href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="1" data-rayon-id="0"
-               data-p-id="10"><p class="main-modal__title">МБОУ "Поповская СОШ Шебекинского района"</p>
-                <p class="main-modal__subtitle">Шебекинский район, с. Поповка, ул. Центральная</p>
-            </a>
-            <a href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="1" data-rayon-id="0"
-               data-p-id="18">
-                <p class="main-modal__title">ОГБОУ "Шебекинская СОШ с УИОП"</p>
-                <p class="main-modal__subtitle">Шебекинский район, г. Шебекино ул, Мичурина, 2</p>
-            </a>
-            <a href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="1" data-rayon-id="0"
-               data-p-id="3"><p class="main-modal__title">Капитальный ремонт МОУ "Сергиевская средняя
-                общеобразовательная школа" в с. Сергиевка Краснояружского района</p>
-                <p class="main-modal__subtitle">Краснояружский муниципальный район, Сельское поселение Сергиевское,
-                    Сергиевка с, Центральная ул, дом 4</p>
-            </a>
-            <a href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="1" data-rayon-id="0"
-               data-p-id="4"><p class="main-modal__title">Капитальный ремонт МОУ "Графовская СОШ", с. Графовка
-                Краснояружского
-                района</p>
-                <p class="main-modal__subtitle">Краснояружский муниципальный район, Сельское поселение Графовское,
-                    Графовка
-                    с, Центральная ул, дом 31</p>
-            </a>
-            <a href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="1" data-rayon-id="0"
-               data-p-id="5"><p class="main-modal__title">Центр дополнительного
-                образования детей "Дом Харитоненко"</p>
-                <p class="main-modal__subtitle">Краснояружский муниципальный район, Городское поселение поселок Красная
-                    Яруга, Красная Яруга п, Театральная ул, дом 7</p>
-            </a>
-            <a href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="1" data-rayon-id="0"
-               data-p-id="6"><p class="main-modal__title">Капитальный ремонт ДОУ № 6 г. Шебекино</p>
-                <p class="main-modal__subtitle">Шебекинский район, г. Шебекино ул. Дзержинского, 15</p>
-            </a>
-            <a href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="1" data-rayon-id="0"
-               data-p-id="10"><p class="main-modal__title">МБОУ "Поповская СОШ Шебекинского района"</p>
-                <p class="main-modal__subtitle">Шебекинский район, с. Поповка, ул. Центральная</p>
-            </a>
-            <a href="#" class="main-modal__regions__header" onclick="getProgect(this)" data-id="1" data-rayon-id="0"
-               data-p-id="18">
-                <p class="main-modal__title">ОГБОУ "Шебекинская СОШ с УИОП"</p>
-                <p class="main-modal__subtitle">Шебекинский район, г. Шебекино ул, Мичурина, 2</p>
-            </a>
+        <a href="#" class="close-category-modal back-btn">Назад</a>
+        <div class="category-modal__content"></div>
+    </div>
+</div>
 
+<div class="main-modal righter modal-shadow completed-modal">
+    <div class="main-modal__content">
+        <a href="#" class="close-completed-modal back-btn">
+            <span></span>
+            <span></span>
+        </a>
+        <div class="completed-modal__content position-relative"></div>
+    </div>
+</div>
+
+<div class="main-modal project-modal">
+    <div class="main-modal__content">
+        <a href="#" class="close-project-modal back-btn">Назад</a>
+        <div class="project-modal__content"></div>
+
+        <div class="mt-2 mb-3 expertise">
+            <p class="expertise__title">Не нашли объект? Есть идея? Отправьте ее в «Народную экспертизу».</p>
+            <a href="https://narod-expert.ru/vse-idei/?utm=123456" class="expertise__btn"
+               style="background-color: #F2F2F2; color: #4F4F4F;"><img src="../static/img/expertise.png" alt="">Народная
+                экспертиза</a>
         </div>
-        <div class="list-navigation-row">
-            <a href="" class="list-navigation-link back">Назад</a>
-            <a href="" class="list-navigation-link next">Вперед</a>
+        <div class="mobile-map">
+            <div id="mobile_map" style="width: 100%; height: 400px;"></div>
         </div>
     </div>
+</div>
 
-    <div class="main-modal righter modal-shadow completed-modal">
-        <div class="main-modal__content">
-            <a href="#" class="close-completed-modal back-btn">
-                <span></span>
-                <span></span>
-            </a>
-            <div class="completed-modal__content position-relative"></div>
+<div class="main-modal d-none" id="myModal">
+    <div class="main-modal__content">
+
+
+        <div class="main-modal__header">
+
+            <h4 class="main-modal__title" id="myModalLabel"></h4>
+            <p class="main-modal__subtitle"></p>
         </div>
+
+
     </div>
+</div>
 
-    <div class="main-modal project-modal">
-        <div class="main-modal__content">
-            <a href="#" class="close-project-modal back-btn">Назад</a>
-            <div class="project-modal__content"></div>
-
-            <div class="mt-2 mb-3 expertise">
-                <p class="expertise__title">Не нашли объект? Есть идея? Отправьте ее в «Народную экспертизу».</p>
-                <a href="https://narod-expert.ru/vse-idei/?utm=123456" class="expertise__btn"
-                   style="background-color: #F2F2F2; color: #4F4F4F;"><img src="static/img/expertise.png" alt="">Народная
-                    экспертиза</a>
+<div class="modal" tabindex="-1" role="dialog" id="modalImg">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="mobile-map">
-                <div id="mobile_map" style="width: 100%; height: 400px;"></div>
+            <div class="modal-body">
+                <img src="#" id="modalImg__img" class="modal__img" alt="">
             </div>
         </div>
     </div>
-
-    <div class="main-modal d-none" id="myModal">
-        <div class="main-modal__content">
+</div>
 
 
-            <div class="main-modal__header">
+<script type="text/javascript" src="../static/js/popper.min.js"></script>
+<script type="text/javascript" src="../static/js/main.js"></script>
 
-                <h4 class="main-modal__title" id="myModalLabel"></h4>
-                <p class="main-modal__subtitle"></p>
-            </div>
+<script type="text/javascript" src="../static/js/bootstrap.js"></script>
+<script type="text/javascript" src="../static/js/fancybox.umd.js"></script>
 
+<script type="text/javascript" src="../static/js/main.js"></script>
 
-        </div>
-    </div>
+<script type="text/javascript" src="../static/js/ie10-viewport-bug-workaround.js"></script>
 
-    <div class="modal" tabindex="-1" role="dialog" id="modalImg">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <img src="#" id="modalImg__img" class="modal__img" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <script type="text/javascript" src="static/js/popper.min.js"></script>
-    <script type="text/javascript" src="static/js/main.js"></script>
-
-    <script type="text/javascript" src="static/js/bootstrap.js"></script>
-    <script type="text/javascript" src="static/js/fancybox.umd.js"></script>
-
-    <script type="text/javascript" src="static/js/main.js"></script>
-
-    <script type="text/javascript" src="static/js/ie10-viewport-bug-workaround.js"></script>
-
-    <script type="text/javascript" src="static/js/uikit-3.3.3/js/uikit.min.js"></script>
+<script type="text/javascript" src="../static/js/uikit-3.3.3/js/uikit.min.js"></script>
 
 
 </body>
