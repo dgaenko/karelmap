@@ -107,8 +107,10 @@
         <p class="main-modal__body__title">Объем финансирования</p>
         <p class="main-modal__body__conernt">{{:object.price_str}}</p>
 
-        <p class="main-modal__body__title">Объем поддержки</p>
-        <p class="main-modal__body__conernt">{{:object.price_grant_str}}</p>
+        {{if object.price_grant_str}}
+            <p class="main-modal__body__title">Объем поддержки</p>
+            <p class="main-modal__body__conernt">{{:object.price_grant_str}}</p>
+        {{/if}}
 
         <p class="main-modal__body__title">Срок начала</p>
         <p class="main-modal__body__conernt">{{:object.start_date}}</p>
@@ -169,10 +171,9 @@
             </div>
         {{/if}}
 
-        {{if object.webcam_link}}
-            <a id="camera-modal-link" class="camera-modal-link" href="{{:object.webcam_link}}" target="_blank">Ссылка на онлайн-камеру проекта</a>
+        {{if object.webcam.link}}
+            <a id="camera-modal-link" class="camera-modal-link">Ссылка на онлайн-камеру проекта</a>
         {{/if}}
-
     </script>
 
 </head>
@@ -334,6 +335,25 @@
         </div>
         <div class="mobile-map">
             <div id="mobile_map" style="width: 100%; height: 400px;"></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="camera-modal" tabindex="-1" role="dialog" aria-modal="true" style="display: none;">
+    <div class="modal-dialog modal-lg modal-dialog-centered camera-wrapper">
+        <div class="modal-content position-relative">
+            <div class="py-2 d-block d-md-none">
+                <img src="/static/img/regip2021.svg" style="height: 48px;" alt="">
+            </div>
+            <div class="modal-header px-0">
+                <h5 class="modal-title" id="exampleModalLongTitle" style="font-weight: bold">Онлайн камера объекта:</h5>
+                <button type="button" class="close d-md-block" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="webcam-block-wrapper">
+                <iframe src="about:blank" width="100%" height="510" frameborder="0" allowfullscreen="true"></iframe>
+            </div>
         </div>
     </div>
 </div>

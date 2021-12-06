@@ -1,5 +1,7 @@
 const map = {
 
+    debug: false,
+
     myMap: null,
     clusterer: null,
     center: [63.83908350210848, 34.41274809002659],
@@ -8,8 +10,10 @@ const map = {
     single_zoom: 16,
 
     dd: function () {
-        for (let i = 0; i < arguments.length; i++) {
-            console.log(arguments[i]);
+        if (this.debug) {
+            for (let i = 0; i < arguments.length; i++) {
+                console.log(arguments[i]);
+            }
         }
     },
 
@@ -34,14 +38,12 @@ const map = {
     showKarelRegion: function () {
         this.dd("showKarelRegion");
         ymaps.borders.load('RU').then(function (geojson) {
-            console.log(geojson);
             let regions = new ymaps.ObjectManager();
 
             let feature;
             for (let i in geojson.features) {
                 feature = geojson.features[i];
                 if (feature.properties.iso3166 == "RU-KR") {
-                    console.log(feature.properties.iso3166, feature.properties.name);
                     feature.id = feature.properties.iso3166;
                     feature.options = {
                         strokeColor: '#0074e8',
@@ -67,7 +69,7 @@ const map = {
         const url = "http://nominatim.openstreetmap.org/search";
         $.getJSON(url, { q: fullname, format: "json", polygon_geojson: 1 })
             .then(function (data) {
-                console.log(data);
+                map.dd(data);
                 $.each(data, function(ix, place) {
                     if (place.osm_type === "relation") {
                         const coords = map.osmRegionConvert(place.geojson.coordinates[0]);

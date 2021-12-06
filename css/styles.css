@@ -33,3 +33,7 @@
 .project-modal {
     z-index: 1000;
 }
+
+#camera-modal .modal-content {
+    padding-top: 0px !important;
+}

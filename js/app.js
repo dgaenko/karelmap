@@ -23,6 +23,8 @@ function offSpinner() {
 
 const app = {
 
+    debug: false,
+
     url: "http://karmap.gamma.interso.ru/",
     api: "local/templates/karmap/ajax/",
 
@@ -30,8 +32,10 @@ const app = {
     cat_id: 0,
 
     dd: function () {
-        for (let i = 0; i < arguments.length; i++) {
-            console.log(arguments[i]);
+        if (this.debug) {
+            for (let i = 0; i < arguments.length; i++) {
+                console.log(arguments[i]);
+            }
         }
     },
 
@@ -110,13 +114,27 @@ const app = {
         app.dd("loadObjectInfo obj_id:" + obj_id);
         onSpinner();
         let url = this.apiUrl() + "getObject.php?id=" + obj_id;
-        console.log(url);
+        app.dd(url);
         $.get(url)
             .done(function (response) {
                 response.site = app.url;
-                console.log(response);
+                app.dd(response);
                 const html = app.render("#tpl_object", response);
                 $(".project-modal__content").html(html);
+
+                if (response.object.webcam)
+                $(".camera-modal-link").click(function () {
+                    if (response.object.webcam.type == "sampo") {
+                        const s = encodeURI(response.object.webcam.link);
+                        $(".webcam-block-wrapper iframe").attr("src", "camera.php?s=" + s);
+                        //$(".webcam-block-wrapper").html(response.object.webcam.link);
+                    }
+                    if (response.object.webcam.type == "citylink") {
+                        const s = "https://www.geocam.ru/js/player/playerjs.html?file=https://s2.moidom-stream.ru/s/public/0000001203.m3u8&poster=https://s2.moidom-stream.ru/s/public/0000001203.jpg";
+                        $(".webcam-block-wrapper iframe").attr("src", s);
+                    }
+                    $("#camera-modal").modal("show");
+                });
 
                 app.showProjectModal(true);
                 map.showMarkers([ response.object ]);
@@ -147,7 +165,7 @@ const app = {
         this.dd(url);
         $.get(url)
             .done(function (response){
-                console.log(response);
+                app.dd(response);
                 const html = app.render("#tpl_released", response);
                 app.showMiddleBox(html);
                 app.loadRealizedCount(app.cat_id, ".completed-modal");
@@ -180,7 +198,7 @@ const app = {
                 $(".section_region").fadeIn();
                 $(".section_cats").hide();
                 response.site = app.url;
-                console.log(response)
+                app.dd(response)
                 map.showRayon(response.region.name);
                 const html = app.render("#tpl_region", response);
                 $(".section_region").html(html);
@@ -219,7 +237,7 @@ const app = {
         onSpinner();
         $.get(this.apiUrl() + "getRegionsList.php")
             .done(function (response){
-                console.log(response)
+                app.dd(response)
                 response.site = app.url;
                 const html = app.render("#tpl_regions", response);
                 $(".regions-modal .list").html(html);
@@ -254,7 +272,7 @@ const app = {
         this.dd("loadCategory cat_id:" + cat_id);
         onSpinner();
         const url = this.apiUrl() + "getObjectsList.php?regionId=" + app.region_id + "&categoryId=" + cat_id + "&page=" + page;
-        console.log(url);
+        this.dd(url);
         $.get(url)
             .done(function (response){
                 app.dd(response);
@@ -295,7 +313,7 @@ const app = {
         if (list_navigation.prev_page) {
             $(container + " .list-navigation-row .back").visible();
             $(container + " .list-navigation-row .back").unbind('click').click(function (){
-                console.log("back", app.cat_id, list_navigation.prev_page);
+                app.dd("back", app.cat_id, list_navigation.prev_page);
                 event.preventDefault();
                 callback(list_navigation.prev_page);
             })
@@ -305,7 +323,7 @@ const app = {
         if (list_navigation.next_page) {
             $(container + " .list-navigation-row .next").visible();
             $(container + " .list-navigation-row .next").unbind('click').click(function (){
-                console.log("next", app.cat_id, list_navigation.next_page);
+                app.dd("next", app.cat_id, list_navigation.next_page);
                 event.preventDefault();
                 callback(list_navigation.next_page);
             })
@@ -358,7 +376,7 @@ const app = {
         onSpinner();
         $.get(url)
             .done(function (response){
-                console.log(response);
+                app.dd(response);
                 map.showMarkers(response.objects_list);
                 if (!region_id && !cat_id) {
                     map.showKarelRegion();
