@@ -23,12 +23,13 @@ function offSpinner() {
 
 const app = {
 
-    debug: false,
+    debug: true,
 
     url: "http://karmap.gamma.interso.ru/",
     api: "local/templates/karmap/ajax/",
 
     region_id: 0,
+    region_name: "",
     cat_id: 0,
 
     dd: function () {
@@ -123,7 +124,7 @@ const app = {
                 $(".project-modal__content").html(html);
 
                 if (response.object.webcam)
-                $(".camera-modal-link").click(function () {
+                $(".camera-modal-link").unbind("click").click(function () {
                     if (response.object.webcam.type == "sampo") {
                         const s = encodeURI(response.object.webcam.link);
                         $(".webcam-block-wrapper iframe").attr("src", "camera.php?s=" + s);
@@ -169,7 +170,7 @@ const app = {
                 const html = app.render("#tpl_released", response);
                 app.showMiddleBox(html);
                 app.loadRealizedCount(app.cat_id, ".completed-modal");
-                $(".completed-modal .object_link").click(function (){
+                $(".completed-modal .object_link").unbind("click").click(function (){
                     let obj_id = $(this).attr("data-id");
                     app.showObjectInfo(obj_id);
                 });
@@ -188,7 +189,9 @@ const app = {
 
     loadRegion: function (region_id) {
         this.dd("loadRegion id:" + region_id);
-        if (!region_id) return;
+        if (!region_id) {
+            return;
+        }
         onSpinner();
         this.loadObjectsList(region_id);
         const url = this.apiUrl() + "getRegion.php?id=" + region_id;
@@ -199,6 +202,7 @@ const app = {
                 $(".section_cats").hide();
                 response.site = app.url;
                 app.dd(response)
+                app.region_name = response.region.name;
                 map.showRayon(response.region.name);
                 const html = app.render("#tpl_region", response);
                 $(".section_region").html(html);
@@ -213,6 +217,7 @@ const app = {
                     app.showRegionsModal(false);
                     $('.completed-modal').removeClass('active');
                     app.region_id = 0;
+                    app.region_name = "";
                     app.loadObjectsList();
                 });
                 if (response.region.objects_realized_count) {
@@ -241,7 +246,7 @@ const app = {
                 response.site = app.url;
                 const html = app.render("#tpl_regions", response);
                 $(".regions-modal .list").html(html);
-                $(".region_btn").click(function (el){
+                $(".region_btn").unbind("click").click(function (el){
                     event.preventDefault();
                     const id = $(this).attr("data-id");
                     app.showRegionInfo(id);
@@ -279,13 +284,13 @@ const app = {
                 offSpinner();
                 const html = app.render("#tpl_cat_objects", response);
                 $(".category-modal__content").html(html);
-                $(".category-modal .object_link").click(function () {
+                $(".category-modal .object_link").unbind("click").click(function () {
                     let obj_id = $(this).attr("data-id");
                     app.showObjectInfo(obj_id);
                 });
                 if (response.objects_realized_count) {
                     // Кнопка завершенные объекты
-                    $(".category-modal .expertise__btn").click(function () {
+                    $(".category-modal .expertise__btn").unbind("click").click(function () {
                         event.preventDefault();
                         app.loadReleasedObjects(app.region_id, cat_id, true);
                     });
@@ -345,11 +350,12 @@ const app = {
                 response.site = app.url;
                 const html = app.render("#tpl_cats", response);
                 $(container_selector).html(html);
-                $(".category_btn").click(function (){
+                $(".category_btn").unbind("click").click(function (){
                     event.preventDefault();
                     const cat_id = $(this).attr("data-id");
                     app.loadCategory(cat_id, 1);
                     app.loadObjectsList(app.region_id, cat_id);
+                    map.showRayon(app.region_name);
                     app.cat_id = cat_id;
                 });
                 offSpinner();
@@ -393,7 +399,7 @@ const app = {
     init: function () {
         this.dd("init");
         //setTimeout(function (){ onSpinner(); }, 50);
-        $(".category-modal .back-btn").click(function () {
+        $(".category-modal .back-btn").unbind("click").click(function () {
             event.preventDefault();
             event.stopPropagation();
             app.showCompletedModal(false);
@@ -401,15 +407,16 @@ const app = {
             app.loadObjectsList(app.region_id);
             app.loadRegion(app.region_id);
         });
-        $(".section_cats .expertise__btn").click(function (){
+        $(".section_cats .expertise__btn").unbind("click").click(function (){
             event.preventDefault();
             app.cat_id = 0;
             app.loadReleasedObjects(0, 0, true);
         });
-        $(".project-modal .back-btn").click(function (){
+        $(".project-modal .back-btn").unbind("click").click(function (){
             app.loadRegion(app.region_id);
             app.loadObjectsList(app.region_id, app.cat_id);
             app.showProjectModal(false);
+            map.showRayon(app.region_name);
         });
         this.loadRegions();
         this.loadCategories(0, ".section_cats .list");

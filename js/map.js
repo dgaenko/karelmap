@@ -1,6 +1,7 @@
 const map = {
 
-    debug: false,
+    debug: true,
+    ani_time: 200,
 
     myMap: null,
     clusterer: null,
@@ -66,6 +67,11 @@ const map = {
     showRayon: function (regionName) {
         const fullname = regionName + ", Республика Карелия";
         this.dd("showRayon fullname:" + fullname);
+        if (!fullname) {
+            this.showKarelRegion();
+            this.myMap.setZoom(10, { duration: map.ani_time });
+            return;
+        }
         const url = "http://nominatim.openstreetmap.org/search";
         $.getJSON(url, { q: fullname, format: "json", polygon_geojson: 1 })
             .then(function (data) {
@@ -118,7 +124,7 @@ const map = {
 
     adjustMapBounds:function () {
         if (this.myMap.geoObjects.getLength()) {
-            this.myMap.setBounds(this.myMap.geoObjects.getBounds(), { checkZoomRange: true });
+            this.myMap.setBounds(this.myMap.geoObjects.getBounds(), { checkZoomRange: true, duration: map.ani_time });
         }
     },
 
