@@ -31,6 +31,7 @@ const app = {
     region_id: 0,
     region_name: "",
     cat_id: 0,
+    color: "#000",
 
     dd: function () {
         if (this.debug) {
@@ -138,6 +139,7 @@ const app = {
                 });
 
                 app.showProjectModal(true);
+                response.object.color = app.color;
                 map.showMarkers([ response.object ]);
                 offSpinner();
             })
@@ -193,17 +195,19 @@ const app = {
             return;
         }
         onSpinner();
-        this.loadObjectsList(region_id);
         const url = this.apiUrl() + "getRegion.php?id=" + region_id;
         this.dd(url);
         $.get(url)
             .done(function (response){
+                app.loadObjectsList(region_id, 0, false, function (){
+                    map.showRayon(response.region.name);
+                });
                 $(".section_region").fadeIn();
                 $(".section_cats").hide();
                 response.site = app.url;
                 app.dd(response)
                 app.region_name = response.region.name;
-                map.showRayon(response.region.name);
+                app.cat_id = 0;
                 const html = app.render("#tpl_region", response);
                 $(".section_region").html(html);
                 app.loadCategories(region_id, ".section_region .list");
@@ -211,6 +215,7 @@ const app = {
                     app.showRegionsModal(true);
                 });
                 $(".section_region .back-btn").unbind("click").click(function () {
+                    app.dd("CATEGORY BACK");
                     event.preventDefault();
                     $(".section_cats").fadeIn();
                     $(".section_region").fadeOut();
@@ -285,10 +290,12 @@ const app = {
                 const html = app.render("#tpl_cat_objects", response);
                 $(".category-modal__content").html(html);
                 $(".category-modal .object_link").unbind("click").click(function () {
+                    event.preventDefault();
                     let obj_id = $(this).attr("data-id");
                     app.showObjectInfo(obj_id);
                 });
                 if (response.objects_realized_count) {
+                    app.dd("CATEGORY REALIZED");
                     // Кнопка завершенные объекты
                     $(".category-modal .expertise__btn").unbind("click").click(function () {
                         event.preventDefault();
@@ -353,9 +360,11 @@ const app = {
                 $(".category_btn").unbind("click").click(function (){
                     event.preventDefault();
                     const cat_id = $(this).attr("data-id");
+                    app.color = $(this).attr("data-color");
                     app.loadCategory(cat_id, 1);
-                    app.loadObjectsList(app.region_id, cat_id);
-                    map.showRayon(app.region_name);
+                    app.loadObjectsList(app.region_id, cat_id, false, function () {
+                        map.showRayon(app.region_name);
+                    });
                     app.cat_id = cat_id;
                 });
                 offSpinner();
@@ -367,9 +376,10 @@ const app = {
         );
     },
 
-    loadObjectsList: function (region_id, cat_id, realize_status) {
+    loadObjectsList: function (region_id, cat_id, realize_status, callback) {
         this.dd("loadObjectsList region_id:" + region_id + " cat_id:" + cat_id + " realize_status:" + realize_status);
         let url = this.apiUrl() + "getObjectsList.php?";
+        this.dd(url);
         if (region_id) {
             url += "&regionId=" + region_id;
         }
@@ -387,6 +397,7 @@ const app = {
                 if (!region_id && !cat_id) {
                     map.showKarelRegion();
                 }
+                if (callback) callback();
                 offSpinner();
             })
             .fail(function(jqXHR, textStatus, errorThrown) {
@@ -400,11 +411,13 @@ const app = {
         this.dd("init");
         //setTimeout(function (){ onSpinner(); }, 50);
         $(".category-modal .back-btn").unbind("click").click(function () {
+            app.dd("PROJECTS BACK region_id:" + app.region_id + " cat_id:" + app.cat_id);
+            if (!app.region_id) app.cat_id = 0;
             event.preventDefault();
             event.stopPropagation();
             app.showCompletedModal(false);
             app.showCategoryModal(false);
-            app.loadObjectsList(app.region_id);
+            app.loadObjectsList(app.region_id, app.cat_id);
             app.loadRegion(app.region_id);
         });
         $(".section_cats .expertise__btn").unbind("click").click(function (){
@@ -413,7 +426,11 @@ const app = {
             app.loadReleasedObjects(0, 0, true);
         });
         $(".project-modal .back-btn").unbind("click").click(function (){
-            app.loadRegion(app.region_id);
+            app.dd("PROJECT BACK region_id:" + app.region_id + " cat_id:" + app.cat_id);
+            event.preventDefault();
+            if (!app.cat_id) {
+                app.loadRegion(app.region_id);
+            }
             app.loadObjectsList(app.region_id, app.cat_id);
             app.showProjectModal(false);
             map.showRayon(app.region_name);
@@ -426,4 +443,7 @@ const app = {
 
 $(function (){
     app.init();
+    setInterval(() => {
+        $(".debug_info").html("reg_id: " + app.region_id + "<br>cat_id:" + app.cat_id);
+    }, 100);
 })

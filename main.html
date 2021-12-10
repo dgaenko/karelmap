@@ -18,8 +18,8 @@
     <!--script src="static/js/map.js"></script-->
     <script src="js/jsrender.min.js"></script>
     <script src="js/svg-inject.min.js"></script>
-    <script src="js/map.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/map.js"></script>
     <!---->
     <link type="text/css" href="static/js/uikit-3.3.3/css/uikit.css" rel="stylesheet">
     <link type="text/css" href="css/styles.css" rel="stylesheet">
@@ -27,7 +27,7 @@
     <script id="tpl_cats" type="text/x-jsrender">
         {{props categories_list}}
             <div class="my-1">
-                <a class="category_btn" data-id="{{:prop.id}}"
+                <a class="category_btn" data-id="{{:prop.id}}" data-color="{{:prop.color}}"
                    style="background-color: {{:prop.color}};">
                     <div class="category_btn-inner">
                         <img src="{{:~root.site}}{{:prop.img_src}}">
@@ -188,6 +188,7 @@
                          src="static/img/logo.svg">
                 </picture>
                 <h2 class="header-title-link">Интерактивная карта по реализации в Республике Карелия национальных проектов</h2>
+                <div class="debug_info" style="font-size: 0.8em"></div>
             </a>
         </div>
 
@@ -195,8 +196,7 @@
         <div class="col-7 col-lg-7 ml-auto">
             <div class="ml-auto header__info">
                 <div class="row">
-                    <div class="header-slider uk-position-relative uk-visible-toggle" tabindex="-1"
-                         uk-slider="clsActivated: uk-transition-active">
+                    <div class="header-slider uk-position-relative uk-visible-toggle" tabindex="-1" uk-slider="clsActivated: uk-transition-active; autoplay: true; autoplay-interval: 1500">
                         <ul class="uk-slider-items uk-grid">
                             <li class="uk-width">
                                 <div class="uk-panel header__info-item">

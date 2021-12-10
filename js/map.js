@@ -1,6 +1,6 @@
 const map = {
 
-    debug: true,
+    debug: false,
     ani_time: 200,
 
     myMap: null,
@@ -20,6 +20,7 @@ const map = {
 
     init: function () {
         this.dd("init");
+        this.debug = app.debug;
         ymaps.ready(function () {
             const mapid = $(window).width() > 1023 ? "map" : "mobile_map";
             map.myMap = new ymaps.Map(mapid, {
@@ -128,16 +129,29 @@ const map = {
         }
     },
 
+    removeDoubles: function (objects) {
+        let ids = [];
+        let res = [];
+        objects.forEach(function (val) {
+            console.log(val)
+           if ($.inArray(val.id, ids) < 0) {
+               res.push(val);
+               ids.push(val.id);
+           }
+        });
+        return res;
+    },
+
     showMarkers: function (objects) {
-        this.dd("showMarkers");
+        this.dd("showMarkers", objects);
         this.clear();
         if (!objects || !objects.length) {
             //this.myMap.setCenter(this.center, this.zoom);
-            this.adjustMapBounds();
-            return;
+            return this.adjustMapBounds();
         }
         let geoObjects = [];
         let coords = [];
+        objects = this.removeDoubles(objects);
         for (let i = 0, len = objects.length; i < len; i++) {
             coords = objects[i].map_coordinates.split(",");
             geoObjects[i] = new ymaps.Placemark(coords, {
