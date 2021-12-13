@@ -91,7 +91,7 @@ const map = {
                         map.myMap.geoObjects.add(p);
                     }
                 });
-                map.adjustMapBounds();
+                //map.adjustMapBounds();
                 //map.myMap.setBounds(map.myMap.geoObjects.getBounds(), { checkZoomRange: true });
             }, function (err) {
                 console.log(err);
@@ -133,7 +133,6 @@ const map = {
         let ids = [];
         let res = [];
         objects.forEach(function (val) {
-            console.log(val)
            if ($.inArray(val.id, ids) < 0) {
                res.push(val);
                ids.push(val.id);
@@ -142,7 +141,7 @@ const map = {
         return res;
     },
 
-    showMarkers: function (objects) {
+    showMarkers: function (objects, callback) {
         this.dd("showMarkers", objects);
         this.clear();
         if (!objects || !objects.length) {
@@ -161,20 +160,22 @@ const map = {
                 iconColor: objects[i].color
             });
             geoObjects[i].obj_id = objects[i].id;
+            geoObjects[i].color = objects[i].color;
             geoObjects[i].events.add('click', function (e) {
                 let target = e.get('target');
+                app.color = target.color;
                 app.showObjectInfo(target.obj_id);
             });
         }
         this.clusterer.add(geoObjects);
         this.myMap.geoObjects.add(this.clusterer);
-        //this.myMap.setBounds(this.clusterer.getBounds(), { checkZoomRange: true });
         if (objects.length > 1) {
             this.adjustMapBounds();
         } else {
             coords = objects[0].map_coordinates.split(",");
             this.myMap.setCenter(coords, map.single_zoom);
         }
+        if (callback) callback();
     },
 
 }

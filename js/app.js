@@ -23,7 +23,7 @@ function offSpinner() {
 
 const app = {
 
-    debug: true,
+    debug: false,
 
     url: "http://karmap.gamma.interso.ru/",
     api: "local/templates/karmap/ajax/",
@@ -124,19 +124,22 @@ const app = {
                 const html = app.render("#tpl_object", response);
                 $(".project-modal__content").html(html);
 
-                if (response.object.webcam)
-                $(".camera-modal-link").unbind("click").click(function () {
-                    if (response.object.webcam.type == "sampo") {
-                        const s = encodeURI(response.object.webcam.link);
-                        $(".webcam-block-wrapper iframe").attr("src", "camera.php?s=" + s);
-                        //$(".webcam-block-wrapper").html(response.object.webcam.link);
-                    }
-                    if (response.object.webcam.type == "citylink") {
-                        const s = "https://www.geocam.ru/js/player/playerjs.html?file=https://s2.moidom-stream.ru/s/public/0000001203.m3u8&poster=https://s2.moidom-stream.ru/s/public/0000001203.jpg";
-                        $(".webcam-block-wrapper iframe").attr("src", s);
-                    }
-                    $("#camera-modal").modal("show");
-                });
+                if (response.object.webcam && response.object.webcam.type != "another") {
+                    $(".camera-modal-link").unbind("click").click(function () {
+                        if (response.object.webcam.type == "sampo") {
+                            const s = encodeURI(response.object.webcam.link);
+                            $(".webcam-block-wrapper iframe").attr("src", "camera.php?s=" + s);
+                            //$(".webcam-block-wrapper").html(response.object.webcam.link);
+                        }
+                        if (response.object.webcam.type == "citylink") {
+                            const s = "https://www.geocam.ru/js/player/playerjs.html?file=https://s2.moidom-stream.ru/s/public/0000001203.m3u8&poster=https://s2.moidom-stream.ru/s/public/0000001203.jpg";
+                            $(".webcam-block-wrapper iframe").attr("src", s);
+                        }
+                        $("#camera-modal").modal("show");
+                    });
+                } else {
+                    $(".camera-modal-link").attr("href", response.object.webcam.link);
+                }
 
                 app.showProjectModal(true);
                 response.object.color = app.color;
@@ -174,6 +177,7 @@ const app = {
                 app.loadRealizedCount(app.cat_id, ".completed-modal");
                 $(".completed-modal .object_link").unbind("click").click(function (){
                     let obj_id = $(this).attr("data-id");
+                    app.color = $(this).attr("data-color");
                     app.showObjectInfo(obj_id);
                 });
                 app.showNavigation(".completed-modal", response.list_navigation, function (page){
@@ -294,7 +298,7 @@ const app = {
                     let obj_id = $(this).attr("data-id");
                     app.showObjectInfo(obj_id);
                 });
-                if (response.objects_realized_count) {
+                if (1 || response.objects_realized_count) {
                     app.dd("CATEGORY REALIZED");
                     // Кнопка завершенные объекты
                     $(".category-modal .expertise__btn").unbind("click").click(function () {
@@ -393,11 +397,12 @@ const app = {
         $.get(url)
             .done(function (response){
                 app.dd(response);
-                map.showMarkers(response.objects_list);
-                if (!region_id && !cat_id) {
-                    map.showKarelRegion();
-                }
-                if (callback) callback();
+                map.showMarkers(response.objects_list, function () {
+                    if (!region_id && !cat_id) {
+                        map.showKarelRegion();
+                    }
+                    if (callback) callback();
+                });
                 offSpinner();
             })
             .fail(function(jqXHR, textStatus, errorThrown) {
@@ -423,7 +428,9 @@ const app = {
         $(".section_cats .expertise__btn").unbind("click").click(function (){
             event.preventDefault();
             app.cat_id = 0;
-            app.loadReleasedObjects(0, 0, true);
+            app.loadReleasedObjects(0, 0, true, function (){
+                map.showRayon(app.region_name);
+            });
         });
         $(".project-modal .back-btn").unbind("click").click(function (){
             app.dd("PROJECT BACK region_id:" + app.region_id + " cat_id:" + app.cat_id);
@@ -431,9 +438,10 @@ const app = {
             if (!app.cat_id) {
                 app.loadRegion(app.region_id);
             }
-            app.loadObjectsList(app.region_id, app.cat_id);
+            app.loadObjectsList(app.region_id, app.cat_id, false, function (){
+                map.showRayon(app.region_name);
+            });
             app.showProjectModal(false);
-            map.showRayon(app.region_name);
         });
         this.loadRegions();
         this.loadCategories(0, ".section_cats .list");

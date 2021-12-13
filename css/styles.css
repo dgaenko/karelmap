@@ -1,3 +1,41 @@
+path {
+    animation: fadeIn ease 0.3s;
+}
+.ymaps-2-1-79-placemark-overlay {
+    animation: fadeIn ease 1s;
+}
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+
+
+
+.hidden {
+    display: none;
+}
+
 #categories .list .category_btn-inner img path {
     fill: red;
 }

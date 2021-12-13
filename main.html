@@ -70,7 +70,7 @@
         <div class="border-bottom pb-2"><p class="complete__title">Последние реализованные объекты:</p></div>
 
         {{props objects_list}}
-            <a href="#" class="main-modal__regions__header object_link" data-id="{{:prop.id}}">
+            <a href="#" class="main-modal__regions__header object_link" data-id="{{:prop.id}}" data-color="{{:prop.color}}">
                 <p class="main-modal__title">{{:prop.name}}</p>
                 <p class="main-modal__subtitle">{{:prop.address}}</p>
             </a>
@@ -172,7 +172,7 @@
         {{/if}}
 
         {{if object.webcam.link}}
-            <a id="camera-modal-link" class="camera-modal-link">Ссылка на онлайн-камеру проекта</a>
+            <a id="camera-modal-link" class="camera-modal-link" target="_blank">Ссылка на онлайн-камеру проекта</a>
         {{/if}}
     </script>
 
@@ -188,7 +188,7 @@
                          src="static/img/logo.svg">
                 </picture>
                 <h2 class="header-title-link">Интерактивная карта по реализации в Республике Карелия национальных проектов</h2>
-                <div class="debug_info" style="font-size: 0.8em"></div>
+                <div class="debug_info hidden" style="font-size: 0.8em"></div>
             </a>
         </div>
 
@@ -196,7 +196,7 @@
         <div class="col-7 col-lg-7 ml-auto">
             <div class="ml-auto header__info">
                 <div class="row">
-                    <div class="header-slider uk-position-relative uk-visible-toggle" tabindex="-1" uk-slider="clsActivated: uk-transition-active; autoplay: true; autoplay-interval: 1500">
+                    <div class="header-slider uk-position-relative uk-visible-toggle" tabindex="-1" uk-slider="clsActivated: uk-transition-active; autoplay: true; autoplay-interval: 4500">
                         <ul class="uk-slider-items uk-grid">
                             <li class="uk-width">
                                 <div class="uk-panel header__info-item">
